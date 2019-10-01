@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/emailEnter"
+        android:hint="@string/email_label"
+        style="@style/LabelStyle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:textSize="28sp"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/passwordEnter"
+        android:hint="@string/password_label"
+        style="@style/LabelStyle"
+        android:layout_below="@+id/emailEnter"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="28sp"
+        />
+
+
+    <TextView
+        android:id="@+id/pop_up"
+        style="@style/LabelStyle"
+        android:layout_below="@+id/passwordEnter"
+        android:minWidth="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        />
+
+</RelativeLayout>
+
+
