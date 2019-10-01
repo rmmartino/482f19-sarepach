@@ -6,20 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/logoID"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src= "@drawable/BSOLogo"
+        />
+    
     <EditText
-        android:id="@+id/emailEnter"
+        android:id="@+id/emailID"
         android:hint="@string/email_label"
         style="@style/LabelStyle"
+        android:layout_below="@+id/logoID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="30dp"
         android:textSize="28sp"
         />
 
     <EditText
-        android:id="@+id/passwordEnter"
+        android:id="@+id/passwordID"
         android:hint="@string/password_label"
         style="@style/LabelStyle"
-        android:layout_below="@+id/emailEnter"
+        android:layout_below="@+id/emailID"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:textSize="28sp"
@@ -29,7 +38,7 @@
     <TextView
         android:id="@+id/pop_up"
         style="@style/LabelStyle"
-        android:layout_below="@+id/passwordEnter"
+        android:layout_below="@+id/passwordID"
         android:minWidth="120dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
