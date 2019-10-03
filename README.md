@@ -5,7 +5,7 @@ This is the repository for team sarepach to develop their Auction application in
 1. Sarah Flaherty (sa)
 2. Rebecca Martino (re)
 3. Patrick Sacchet (pa)
-4. Chelsea Meier
+4. Chelsea Meier (ch)
 
 # Team Lead: 
 Sarah Flaherty
