@@ -9,9 +9,9 @@
     <ImageView
         android:id="@+id/logoID"
         android:layout_centerHorizontal="true"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:src= "@drawable/BSOLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src= "@drawable/bsologo"
         />
 
     <EditText
@@ -20,7 +20,7 @@
         style="@style/LabelStyle"
         android:layout_below="@+id/logoID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:textSize="28sp"
         />
 
@@ -30,21 +30,22 @@
         style="@style/LabelStyle"
         android:layout_below="@+id/emailID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:textSize="28sp"
         />
 
 
-    <TextView
+    <Button
         android:id="@+id/loginID"
         style="@style/LabelStyle"
         android:background="@color/darkGrey"
         android:layout_below="@+id/passwordID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="28sp"
         android:textColor="@android:color/white"
         android:text="@string/login_label"
+        android:onClick="returnToItems"
         />
 
     <TextView
@@ -53,7 +54,7 @@
         android:background="@color/darkGrey"
         android:layout_below="@+id/loginID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:textSize="28sp"
         android:textColor="@android:color/white"
         android:text="@string/signup_label"

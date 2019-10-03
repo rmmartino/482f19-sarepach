@@ -6,14 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
+    <Button
+        android:id="@+id/returnToItems"
+        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:text="@string/items_label"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="returnToItems"
+        />
+
     <TextView
-        android:id="@+id/profile"
+        android:id="@+id/profileLabel"
         style="@style/TextStyle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="28sp"
         android:text="@string/profile_label"
+        android:textStyle="bold"
         />
 
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/profileLabel"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src= "@drawable/profileimage"
+        />
 
 </RelativeLayout>
