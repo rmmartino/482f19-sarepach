@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/returnToItems"
+        android:id="@+id/goToProfButton"
         android:layout_height="60dp"
         android:layout_width="75dp"
         android:textSize="12dp"
@@ -27,4 +27,69 @@
         android:textStyle="bold"
         />
 
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/lightGrey"
+        android:layout_below="@+id/items"
+        android:divider="@color/darkGrey"
+        android:shrinkColumns="1"
+        >
+
+        <TableRow>
+
+        <ImageView
+            android:id="@+id/item1Image"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:src="@drawable/furnlogo"
+            />
+
+            <TextView
+                android:layout_width="169dp"
+                android:layout_height="fill_parent"
+                android:text="Oak Chair\n Min Bid: $50"
+                android:textSize="24dp"
+                />
+
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:layout_column="1"
+                android:onClick="goDescription"
+                android:text="BID!" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/item2Image"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/artlogo"
+                />
+
+            <TextView
+                android:text="Artwork by James Smith \n Min Bid: $125"
+                android:textSize="24dp"
+                />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:layout_column="1"
+                android:onClick="goDescription"
+                android:text="BID!"
+                />
+
+
+        </TableRow>
+
+    </TableLayout>
+
 </RelativeLayout>
+
+

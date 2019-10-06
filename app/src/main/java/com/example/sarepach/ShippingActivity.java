@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class ItemsActivity extends AppCompatActivity {
+public class ShippingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_items);
+        setContentView(R.layout.activity_shipping);
     }
 
 
@@ -20,14 +20,11 @@ public class ItemsActivity extends AppCompatActivity {
         super.onStart();
     }
 
-    public void goProfile(View v) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+
+    public void returnToItems(View v) {
+        Intent intent = new Intent(this, ItemsActivity.class);
         this.startActivity(intent);
     }
 
-    public void goDescription(View v) {
-        Intent intent = new Intent(this, DescriptionActivity.class);
-        this.startActivity(intent);
-    }
 
 }

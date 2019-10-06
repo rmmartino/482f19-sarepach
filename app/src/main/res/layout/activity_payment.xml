@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DescriptionActivity">
+
+
+    <Button
+        android:id="@+id/returnToItems"
+        android:layout_height="60dp"
+        android:layout_width="75dp"
+        android:textSize="12dp"
+        android:text="@string/items_label"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:onClick="returnToItems"
+        />
+    <TextView
+        android:id="@+id/paymentTitle"
+        style="@style/TextStyle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:text="@string/payment_label"
+        android:textStyle="bold"
+        />
+
+
+    <TextView
+        android:id="@+id/reviewID"
+        style="@style/LabelStyle"
+        android:layout_below="@id/paymentTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:text="Please Review the Info:\n You Bid:$130 \n Item: Artwork"
+        />
+
+    <TextView
+        android:id="@+id/creditNameID"
+        style="@style/TextStyle"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reviewID"
+        android:layout_alignLeft="@+id/returnToItems"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:text="Name on Card:"
+        android:textSize="18sp"
+        android:layout_width="200dp"/>
+
+    <EditText
+        android:id="@+id/creditNameInput"
+        style="@style/LabelStyle"
+        android:layout_width="170dp"
+        android:layout_below="@id/reviewID"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/creditNameID"
+        android:hint="$"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/creditNumberID"
+        style="@style/TextStyle"
+        android:layout_height="65dp"
+        android:layout_below="@id/creditNameID"
+        android:layout_alignLeft="@+id/returnToItems"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:text="CC Number: "
+        android:textSize="18sp"
+        android:layout_width="200dp"/>
+
+
+    <EditText
+        android:id="@+id/creditNumberInput"
+        style="@style/LabelStyle"
+        android:layout_width="170dp"
+        android:layout_below="@id/creditNameID"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/creditNameID"
+        android:hint="xxxx-xxxx-xxxx-xxxx"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/creditExpID"
+        style="@style/TextStyle"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/creditNumberID"
+        android:layout_alignLeft="@+id/returnToItems"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:text="Expiration Date: "
+        android:textSize="18sp"
+        android:layout_width="200dp"/>
+
+    <EditText
+        android:id="@+id/expirationDateInput"
+        style="@style/LabelStyle"
+        android:layout_width="170dp"
+        android:layout_below="@id/creditNumberID"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/creditExpID"
+        android:hint=" MM / YY"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/creditCVVID"
+        style="@style/TextStyle"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expirationDateInput"
+        android:layout_alignLeft="@+id/returnToItems"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:text="CVV Code: "
+        android:textSize="18sp"
+        android:layout_width="200dp"/>
+
+    <EditText
+        android:id="@+id/CVVInput"
+        style="@style/LabelStyle"
+        android:layout_width="170dp"
+        android:layout_below="@id/expirationDateInput"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/creditExpID"
+        android:hint="XYZ"
+        android:textSize="18sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CVVInput"
+        android:background="@android:color/holo_green_dark"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Add Shipping Info"
+        android:textSize="30dp"
+        android:onClick="goshippinginfo"
+        />
+
+
+</RelativeLayout>
+
+

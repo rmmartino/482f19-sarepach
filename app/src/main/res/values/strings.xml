@@ -6,5 +6,7 @@
     <string name="signup_label">SIGN UP</string>
     <string name="items_label">AUCTION ITEMS</string>
     <string name="profile_label">PROFILE</string>
+    <string name="payment_label">PAYMENT INFO</string>
+
 
 </resources>
