@@ -6,21 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/logoID"
+    <TextView
+        android:id="@+id/signupLabel"
         android:layout_centerHorizontal="true"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src= "@drawable/bsologo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Sign Up"
+        android:textSize="30dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         />
 
     <EditText
         android:id="@+id/emailID"
         android:hint="@string/email_label"
         style="@style/LabelStyle"
-        android:layout_below="@+id/logoID"
+        android:layout_below="@+id/signupLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textSize="28sp"
         />
 
@@ -30,37 +34,43 @@
         style="@style/LabelStyle"
         android:layout_below="@+id/emailID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textSize="28sp"
         />
 
-
-    <Button
-        android:id="@+id/loginID"
+    <EditText
+        android:id="@+id/passwordConfID"
+        android:hint="Confirm Password"
         style="@style/LabelStyle"
-        android:background="@color/darkGrey"
         android:layout_below="@+id/passwordID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textSize="28sp"
-        android:textColor="@android:color/white"
-        android:text="@string/login_label"
-        android:onClick="returnToItems"
         />
 
     <Button
         android:id="@+id/signupID"
         style="@style/LabelStyle"
         android:background="@color/darkGrey"
-        android:layout_below="@+id/loginID"
+        android:layout_below="@+id/passwordConfID"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="28sp"
         android:textColor="@android:color/white"
-        android:text="@string/signup_label"
-        android:onClick="gosignup"
+        android:text="Submit"
+        android:onClick="returnToItems"
+        />
+
+    <Button
+        android:id="@+id/cancelID"
+        style="@style/LabelStyle"
+        android:background="@android:color/white"
+        android:layout_below="@+id/signupID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Cancel"
+        android:onClick="cancel"
         />
 
 </RelativeLayout>
-
-

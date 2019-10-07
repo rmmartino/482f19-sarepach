@@ -7,13 +7,23 @@
     tools:context=".ProfileActivity">
 
     <Button
-        android:id="@+id/returnToItems"
+    android:id="@+id/returnToItems"
+    android:layout_height="70dp"
+    android:layout_width="100dp"
+    android:text="@string/items_label"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp"
+    android:onClick="returnToItems"
+    />
+
+    <Button
+        android:id="@+id/settingsButton"
         android:layout_height="70dp"
         android:layout_width="100dp"
-        android:text="@string/items_label"
+        android:text="Settings"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:onClick="returnToItems"
+        android:layout_marginLeft="300dp"
+        android:onClick="gosettings"
         />
 
     <TextView

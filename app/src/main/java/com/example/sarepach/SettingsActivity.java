@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_settings);
     }
 
 
@@ -21,14 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
     }
 
-
-    public void returnToItems(View v) {
-        Intent intent = new Intent(this, ItemsActivity.class);
+    public void goProfile(View v) {
+        Intent intent = new Intent(this, ProfileActivity.class);
         this.startActivity(intent);
     }
 
-    public void gosignup(View v) {
-        Intent intent = new Intent(this, SignupActivity.class);
-        this.startActivity(intent);
-    }
 }

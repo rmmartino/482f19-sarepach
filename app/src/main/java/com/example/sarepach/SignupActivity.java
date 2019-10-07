@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_signup);
     }
 
 
@@ -22,13 +21,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void cancel(View w) {
+        Intent intent = new Intent(this, MainActivity.class);
+        this.startActivity(intent);
+    }
+
     public void returnToItems(View v) {
         Intent intent = new Intent(this, ItemsActivity.class);
         this.startActivity(intent);
     }
 
-    public void gosignup(View v) {
-        Intent intent = new Intent(this, SignupActivity.class);
-        this.startActivity(intent);
-    }
+
+
 }

@@ -26,7 +26,7 @@ public class PaymentActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    public void goshippinginfo(View v) {
+    public void goShippingInfo(View w) {
         Intent intent = new Intent(this, ShippingActivity.class);
         this.startActivity(intent);
     }
