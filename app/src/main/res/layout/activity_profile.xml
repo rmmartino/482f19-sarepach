@@ -45,4 +45,78 @@
         android:src= "@drawable/profileimage"
         />
 
+    <TextView
+        android:id="@+id/myBidsLabel"
+        style="@style/TextStyle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/profilePic"
+        android:textSize="28sp"
+        android:text="My Bids:"
+        />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:background="@color/lightGrey"
+        android:layout_below="@+id/myBidsLabel"
+        android:divider="@color/darkGrey"
+        android:shrinkColumns="1"
+        >
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/item1Image"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/furnlogo"
+                />
+
+            <TextView
+                android:layout_width="169dp"
+                android:layout_height="fill_parent"
+                android:text="Oak Chair\n I Bid: $50"
+                android:textSize="24dp"
+                />
+
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:layout_column="1"
+                android:onClick="goDescription"
+                android:text="BID AGAIN!" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/item2Image"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/artlogo"
+                />
+
+            <TextView
+                android:text="Artwork by James Smith \n YOU GOT OUTBID"
+                android:textSize="24dp"
+                />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:layout_column="1"
+                android:onClick="goDescription"
+                android:text="BID AGAIN!"
+                />
+
+
+        </TableRow>
+
+    </TableLayout>
+
 </RelativeLayout>

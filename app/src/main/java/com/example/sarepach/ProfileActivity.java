@@ -23,6 +23,10 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ItemsActivity.class);
         this.startActivity(intent);
     }
+    public void goDescription(View v) {
+        Intent intent = new Intent(this, DescriptionActivity.class);
+        this.startActivity(intent);
+    }
 
 
     public void gosettings(View v) {

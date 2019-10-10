@@ -17,6 +17,7 @@
         android:layout_marginLeft="10dp"
         android:onClick="goProfile"
         />
+
     <TextView
         android:id="@+id/items"
         style="@style/TextStyle"
@@ -58,7 +59,8 @@
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
-        android:name="Filter"/>
+        android:prompt="@string/spinner_title"
+        />
 
     <Button
         android:id="@+id/searchButton"
