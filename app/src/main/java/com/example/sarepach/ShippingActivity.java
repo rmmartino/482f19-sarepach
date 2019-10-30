@@ -26,5 +26,10 @@ public class ShippingActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public void submit(View v) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        this.startActivity(intent);
+    }
+
 
 }

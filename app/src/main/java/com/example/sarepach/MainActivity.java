@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
 
@@ -22,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void returnToItems(View v) {
-        Intent intent = new Intent(this, ItemsActivity.class);
+    public void goProfile(View v) {
+        Intent intent = new Intent(this, ProfileActivity.class);
         this.startActivity(intent);
     }
 

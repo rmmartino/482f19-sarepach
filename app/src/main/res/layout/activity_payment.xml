@@ -59,7 +59,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/creditNameID"
-        android:hint="$"
+        android:hint="First Last"
         android:textSize="18sp" />
 
     <TextView
