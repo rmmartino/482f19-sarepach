@@ -4,6 +4,8 @@ import java.util.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import android.util.Log;
+import java.sql.Connection;
 
 /**
  * Database class, parent class of all types of databases
@@ -39,6 +41,19 @@ public class Database {
         this.Password = password;
     }
 
-    
+    /**
+     * Establishes connection with live database, will write to log for errors
+     * @return con - connection database object
+     */
+    public Connection EstablishConnection() {
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(this.Hostname, this.Username, this.Password);
+        }
+        catch (SQLException err) {
+            Log.w("Database", "Database connection error " + err);
+        }
+        return conn;
+    }
 
 }
