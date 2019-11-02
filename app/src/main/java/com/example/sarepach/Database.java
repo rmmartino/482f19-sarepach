@@ -27,4 +27,18 @@ public class Database {
      */
     protected String Password;
 
+    /**
+     * Database constructor
+     * @param hostname - hostname for the connection
+     * @param username - username for the connection
+     * @param password - password for the connection
+     */
+    Database(String hostname, String username, String password) {
+        this.Hostname = hostname;
+        this.Username = username;
+        this.Password = password;
+    }
+
+    
+
 }
