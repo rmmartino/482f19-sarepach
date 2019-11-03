@@ -84,6 +84,7 @@
                 android:layout_column="1"
                 android:onClick="goDescription"
                 android:text="BID AGAIN! \n You want it!"
+                android:textAllCaps="false"
                 />
 
 
@@ -106,12 +107,11 @@
                 />
 
 
-            <Button
+            <TextView
                 android:layout_width="100dp"
                 android:layout_height="fill_parent"
                 android:layout_column="1"
-                android:onClick="goDescription"
-                android:text="BID AGAIN!" />
+                android:text="Highest Bid!" />
 
 
         </TableRow>
