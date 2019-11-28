@@ -46,7 +46,7 @@ public class User {
   /**
    * Each user has a house number
   */
-  protected String HouseNumber;
+  protected int HouseNumber;
 
   /**
    * Each user has a city they live in
@@ -80,12 +80,34 @@ public class User {
 
   /**
    * User constructor, we only require email and password for initial sign up and sign in so thats all we require for this constructor
+   * @param: email - User's email address
+   * @param: passworfd - User's password
+   * @return: None
   */
   User(String email, String password ) {
     this.Email = email;
     this.Password = password;
     return;
   }
+
+  /**
+   * When user gives address information update it accordingly
+   * @param: streetname - User's street name
+   * @param: city - User's city
+   * @param: state - User's state
+   * @param: housenumber - User's house number
+   * @param: zipcode - User's zipcode
+   * @return: None
+  */
+  public void UpdateAddress(String streetname, String city, String state, int housenumber, int zipcode) {
+    this.StreetName = streetname;
+    this.City = city;
+    this.State = state;
+    this.HouseNumber = housenumber;
+    this.ZipCode = zipcode;
+    return;
+  }
+
 
   
 }
