@@ -7,7 +7,7 @@ package com.example.sarepach;
 
 import java.util.*;
 
-// All module imports for password hashing 
+// All module imports for password hashing
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Optional;
@@ -191,4 +191,11 @@ public class User {
     }
   }
 
+  /**
+   * Get the user's password (hashed)
+   * @return: User's hashed password 
+  */
+  public Optional<String> RetrievePassword() {
+    return this.Password.HashPassword();
+  }
 }
