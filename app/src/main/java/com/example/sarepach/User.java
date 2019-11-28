@@ -108,6 +108,18 @@ public class User {
     return;
   }
 
+  /**
+   * When user gives credit card info update it accordingly
+   * @param: creditcardnumber - User's credit card number
+   * @param: expdate - User's expiration date for their credit card
+   * @param: csv - User's CSV for their credit card
+   * @return: None 
+  */
+  public void UpdateCreditCard( int creditcardnumber, int expdate, int csv) {
+    this.CreditCardNumber = creditcardnumber;
+    this.ExpDate = expdate;
+    this.CSV = csv;
+    return;
+  }
 
-  
 }
