@@ -113,12 +113,26 @@ public class User {
    * @param: creditcardnumber - User's credit card number
    * @param: expdate - User's expiration date for their credit card
    * @param: csv - User's CSV for their credit card
-   * @return: None 
+   * @return: None
   */
   public void UpdateCreditCard( int creditcardnumber, int expdate, int csv) {
     this.CreditCardNumber = creditcardnumber;
     this.ExpDate = expdate;
     this.CSV = csv;
+    return;
+  }
+
+  /**
+   * When user gives own info update accordingly
+   * @param: firstname - User's first name
+   * @param: lastname - User's last name
+   * @param: phonenumber - User's phone number
+   * @return: None 
+  */
+  public void UpdateInfo(String firstname, String lastname, int phonenumber) {
+    this.FirstName = firstname;
+    this.LastName = lastname;
+    this.PhoneNumber = phonenumber;
     return;
   }
 
