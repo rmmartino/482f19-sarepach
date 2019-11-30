@@ -6,16 +6,7 @@
 package com.example.sarepach;
 
 import java.util.*;
-
-// All module imports for password hashing
-import java.security.SecureRandom;
-import java.util.Base64;
-import java.util.Optional;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
+import java.lang.*;
 
 /**
  * Class will represent an instance of a User
@@ -146,56 +137,4 @@ public class User {
     return;
   }
 
-  /**
-   * Function will create 'salt' which will be addded to user's password to prevent dictionary attacks
-   * @return: Base64 encoded salt string
-  */
-  public Optional<String> GenerateSalt () {
-    // Generate instance of secure random and a random int
-    SecureRandom RAND = new SecureRandom();
-    int length = 100;
-    // Create the byte array for salt and open it to length
-    byte[] salt = new byte[length];
-    RAND.nextBytes(salt);
-    // Encode it in base 64 and return
-    return Optional.of(Base64.getEncoder().encodeToString(salt));
-  }
-
-  /**
-   * Hash the user's password using salt
-   * @return: User's hashed password
-  */
-  public Optional<String> HashPassword () {
-    // Set the iterations, key length and the algorithm type to what we are currently using
-    int ITERATIONS = 65536;
-    int KEY_LENGTH = 512;
-    String ALGORITHM = "PBKDF2WithHmacSHA512";
-    // Change user's password to char array and generate some salt
-    char[] chars = this.Password.toCharArray();
-    byte[] bytes = GenerateSalt().getBytes();
-    // Using all four, specify how we are hashing the password
-    PBEKeySpec spec = new PBEKeySpec(chars, bytes, ITERATIONS, KEY_LENGTH);
-    // Fill the char array and attempt to hash password
-    Arrays.fill(chars, Character.MIN_VALUE);
-    try {
-      SecretKeyFactory fac = SecretKeyFactory.getInstance(ALGORITHM);
-      byte[] securePassword = fac.generateSecret(spec).getEncoded();
-      return Optional.of(Base64.getEncoder().encodeToString(securePassword));
-
-    } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
-      System.err.println("Exception encountered in hashing passsword");
-      return Optional.empty();
-
-    } finally {
-      spec.clearPassword();
-    }
-  }
-
-  /**
-   * Get the user's password (hashed)
-   * @return: User's hashed password 
-  */
-  public Optional<String> RetrievePassword() {
-    return this.Password.HashPassword();
-  }
 }
