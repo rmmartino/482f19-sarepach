@@ -37,6 +37,17 @@ public class TestServerConnection {
         ServerConnection serverconnect = new ServerConnection();
         Socket sock = serverconnect.EstablishConnection();
         assertEquals(sock.getInetAddress().getHostAddress(), "144.126.12.148");
-        assertEquals(sock.getPort(), 80);
+        assertEquals(sock.getPort(), 37480);
+    }
+
+    /**
+     * Testing ServerConnect ability to send message successfully to client 
+     */
+    @Test
+    public void TestSendMessage() {
+        ServerConnection serverconnect = new ServerConnection();
+        Socket sock = serverconnect.EstablishConnection();
+        serverconnect.SendMessage("test", sock);
+
     }
 }
