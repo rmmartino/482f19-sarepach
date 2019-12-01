@@ -6,6 +6,8 @@
 package com.example.sarepach;
 
 // Dependencies for socket protocol and logging
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import android.util.Log;
 import java.net.InetAddress;
@@ -19,7 +21,7 @@ public class ServerConnection {
     /**
      * Each ServerConnection will have the baseaddress for our studentvhost2 server
      */
-    protected final String BaseAddress = "http://sarepach.cs.loyola.edu";
+    protected final String BaseAddress = "http://studentvhost2.cs.loyola.edu";
 
     /**
      * Each ServerConnection will have the port the server is hosted on
@@ -63,7 +65,27 @@ public class ServerConnection {
     return sock;
     }
 
+    /**
+     * Method allows us to send specific messages to connected server
+     * @param message - message to be semt to client
+     * @param sock - established sock connection with client
+     */
+    public void SendMessage(String message, Socket sock) {
+        try {
+            ObjectOutputStream oos = null;
+            ObjectInputStream ois = null;
+            oos = new ObjectOutputStream(sock.getOutputStream());
+            oos.writeObject("test");
+            ois = new ObjectInputStream(sock.getInputStream());
+            String messageout = (String) ois.readObject();
+            Log.w("ServerConnection", "Message received: " + messageout);
+            ois.close();
+            oos.close();
+        } catch(java.io.IOException | java.lang.ClassNotFoundException e ) {
+            Log.w("ServerConnection", "Error with message transmit" + e);
+        }
 
-  
+    }
+
 }
 
