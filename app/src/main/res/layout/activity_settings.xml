@@ -35,20 +35,11 @@
         android:src= "@drawable/profileimage"
         />
 
-    <Button
-        android:id="@+id/changePic"
-        style="@style/TextStyle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textSize="28sp"
-        android:text="Edit Picture"
-        android:layout_below="@+id/profilePic"
-        />
 
     <TextView
         android:id="@+id/emailLabel"
         style="@style/TextStyle"
-        android:layout_below="@+id/changePic"
+        android:layout_below="@+id/profilePic"
         android:layout_marginTop="23dp"
         android:text="Your email: "
         android:textSize="28sp"
@@ -57,7 +48,7 @@
     <TextView
         android:id="@+id/email"
         style="@style/TextStyle"
-        android:layout_below="@+id/changePic"
+        android:layout_below="@+id/profilePic"
         android:layout_marginTop="26dp"
         android:layout_toRightOf="@id/addressLabel"
         android:text="exampleEmail@test.com"
