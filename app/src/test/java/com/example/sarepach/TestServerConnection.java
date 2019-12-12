@@ -49,4 +49,10 @@ public class TestServerConnection {
         Socket sock = serverconnect.EstablishConnection();
         serverconnect.SendMessage("test", sock);
     }
+
+    @Test
+    public void TestdoInBackground() {
+        ServerConnection.AsyncRetrieve serverconnect = new ServerConnection.AsyncRetrieve(this, ServerConnection.class);
+        String result = serverconnect.doInBackground();
+    }
 }
