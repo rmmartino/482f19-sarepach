@@ -2,17 +2,61 @@ package com.example.sarepach;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+// Separate additions for AsyncTask connection to server
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.os.Bundle;
+//import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button loginButton;
+        final EditText usernameText;
+        final EditText passwordText;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loginButton = (Button)findViewById(R.id.loginID);
+        usernameText = (EditText)findViewById(R.id.emailID);
+        passwordText = (EditText)findViewById(R.id.passwordID);
+        // Want to wait for user to click login or sign up...
+        loginButton.setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View view)
+                    {
+                        AsyncRetrieve asyncTask = new AsyncRetrieve();
+                        String result = asyncTask.doInBackground(usernameText.getText().toString(), passwordText.getText().toString());
+                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                        alertDialog.setTitle("Display Result");
+                        alertDialog.setMessage(result);
+                        alertDialog.show();
+                        
+                    }
+                });
+
+
+
+
     }
 
 
@@ -29,5 +73,91 @@ public class MainActivity extends AppCompatActivity {
     public void gosignup(View v) {
         Intent intent = new Intent(this, SignupActivity.class);
         this.startActivity(intent);
+    }
+
+
+
+    protected class AsyncRetrieve extends AsyncTask<String, String, String> {
+        //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
+        HttpURLConnection conn;
+        URL url = null;
+        private final String validateUserPHP = "sarepach.cs.loyola.edu/ClientConnection/validateUserLogin.php";
+        public static final int CONNECTION_TIMEOUT = 10000;
+        public static final int READ_TIMEOUT = 15000;
+
+        //this method will interact with UI, here display loading message
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //pdLoading.setMessage("\tLoading...");
+            //pdLoading.setCancelable(false);
+            //pdLoading.show();
+
+        }
+
+        @Override
+        public String doInBackground(String... params) {
+            try {
+                // Only testing admin code for now (will execute client code instead)
+                url = new URL(validateUserPHP);
+
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+
+                // Setup HttpURLConnection class to send and receive data from php
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(READ_TIMEOUT);
+                conn.setConnectTimeout(CONNECTION_TIMEOUT);
+                conn.setRequestMethod("GET");
+
+                // setDoOutput to true as we receive data from json file
+                conn.setDoOutput(true);
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                return e1.toString();
+            }
+
+            try {
+
+                int response_code = conn.getResponseCode();
+
+                // Check if successful connection made
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    // Read data sent from server
+                    InputStream input = conn.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+                    }
+
+                    // Pass data to onPostExecute method
+                    return (result.toString());
+
+                } else {
+
+                    return ("unsuccessful");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conn.disconnect();
+            }
+
+
+        }
+
     }
 }
