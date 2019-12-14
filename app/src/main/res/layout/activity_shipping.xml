@@ -29,7 +29,7 @@
         />
 
     <TextView
-        android:id="@+id/NameID"
+        android:id="@+id/houseID"
         style="@style/TextStyle"
         android:layout_height="wrap_content"
         android:layout_below="@id/shipTitle"
@@ -37,31 +37,31 @@
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/white"
-        android:text="Name:"
+        android:text="House Number:"
         android:textSize="18sp"
         android:layout_width="200dp"/>
 
     <EditText
-        android:id="@+id/NameInput"
+        android:id="@+id/houseInput"
         style="@style/LabelStyle"
         android:layout_width="170dp"
         android:layout_below="@id/shipTitle"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/NameID"
-        android:hint="First Last"
+        android:layout_toRightOf="@id/houseID"
+        android:hint="123"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/addressID"
         style="@style/TextStyle"
         android:layout_height="wrap_content"
-        android:layout_below="@id/NameID"
+        android:layout_below="@id/houseID"
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/white"
-        android:text="Address: "
+        android:text="Street: "
         android:textSize="18sp"
         android:layout_width="200dp"/>
 
@@ -71,11 +71,11 @@
         style="@style/LabelStyle"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/NameInput"
+        android:layout_below="@id/houseInput"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/NameID"
-        android:hint="123 Street Road"
+        android:layout_toRightOf="@id/houseID"
+        android:hint="Auction Road"
         android:textSize="18sp" />
 
     <TextView
@@ -99,15 +99,44 @@
         android:layout_below="@id/addressInput"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/NameID"
+        android:layout_toRightOf="@id/houseID"
         android:hint="Townville"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/stateID"
+        style="@style/TextStyle"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cityID"
+        android:layout_alignLeft="@+id/returnToItems"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:text="State: "
+        android:textSize="18sp"
+        android:layout_width="200dp"/>
+
+
+    <EditText
+        android:id="@+id/stateInput"
+        style="@style/LabelStyle"
+        android:layout_width="170dp"
+        android:layout_below="@id/cityInput"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@id/houseID"
+        android:hint="MD"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/zipID"
         style="@style/TextStyle"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cityID"
+        android:layout_below="@id/stateID"
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
@@ -121,10 +150,14 @@
         android:id="@+id/zipInput"
         style="@style/LabelStyle"
         android:layout_width="170dp"
-        android:layout_below="@id/cityInput"
+        android:layout_below="@id/stateInput"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/NameID"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@id/houseID"
         android:hint="12345"
         android:textSize="18sp" />
 
