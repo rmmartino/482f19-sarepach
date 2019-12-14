@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
-                        AsyncRetrieve asyncTask = new AsyncRetrieve(usernameText.getText().toString(), passwordText.getText().toString());
+                        AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
                         try {
                             String result = asyncTask.execute().get();
                             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    protected class AsyncRetrieve extends AsyncTask<String, String, String> {
+    protected class AsyncValidateUserInfo extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String username;
         String password;
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
-        public AsyncRetrieve(String user, String pass){
+        public AsyncValidateUserInfo(String user, String pass){
             this.username = "?usernameText=" + user;
             this.password = "&passwordText=" + pass;
         }
