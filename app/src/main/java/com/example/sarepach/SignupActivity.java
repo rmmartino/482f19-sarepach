@@ -31,26 +31,40 @@ public class SignupActivity extends AppCompatActivity {
         Button signUpButton;
         final EditText usernameText;
         final EditText passwordText;
+        final EditText passwordConfText;
         setContentView(R.layout.activity_signup);
         signUpButton = (Button)findViewById(R.id.signupID);
         usernameText = (EditText)findViewById(R.id.emailID);
         passwordText = (EditText)findViewById(R.id.passwordID);
+        passwordConfText = (EditText)findViewById(R.id.passwordConfID);
+
+
         // Want to wait for user to click login or sign up...
         signUpButton.setOnClickListener(
                 new View.OnClickListener()
                 {
                     public void onClick(View view)
                     {
-                        AsyncRetrieve asyncTask = new AsyncRetrieve(usernameText.getText().toString(), passwordText.getText().toString());
-                        try {
-                            String result = asyncTask.execute().get();
-                            AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();
-                            alertDialog.setTitle("Display Result");
-                            alertDialog.setMessage(result);
-                            alertDialog.show();
-                        } catch(Exception e){
-                            Log.w("SignUpActivity", e);
+                        if ((passwordText.getText().toString()).equals((passwordConfText.getText().toString()))) {
+                            AsyncRetrieve asyncTask = new AsyncRetrieve(usernameText.getText().toString(), passwordText.getText().toString());
+                            try {
+                                String result = asyncTask.execute().get();
+                                AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();
+                                alertDialog.setTitle("Display Result");
+                                alertDialog.setMessage(result);
+                                alertDialog.show();
+                                returnToItems(null);
+                            } catch (Exception e) {
+                                Log.w("SignUpActivity", e);
 
+                            }
+                        }
+                        else
+                        {
+                            AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();
+                            alertDialog.setTitle("Error");
+                            alertDialog.setMessage("Password and Password Confirmation must match.");
+                            alertDialog.show();
                         }
 
                     }
