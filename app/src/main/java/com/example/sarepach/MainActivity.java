@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                             alertDialog.setTitle("Display Result");
                             alertDialog.setMessage(result);
                             alertDialog.show();
+                            goProfile(null);
                         } catch(Exception e){
                             Log.w("MainActivity", e);
 
