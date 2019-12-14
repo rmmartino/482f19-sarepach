@@ -44,13 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
-                        AsyncRetrieve asyncTask = new AsyncRetrieve();
-                        String result = asyncTask.doInBackground(usernameText.getText().toString(), passwordText.getText().toString());
-                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                        alertDialog.setTitle("Display Result");
-                        alertDialog.setMessage(result);
-                        alertDialog.show();
-                        
+                        AsyncRetrieve asyncTask = new AsyncRetrieve(usernameText.getText().toString(), passwordText.getText().toString());
+                        asyncTask.execute();
+
+
                     }
                 });
 
@@ -79,11 +76,19 @@ public class MainActivity extends AppCompatActivity {
 
     protected class AsyncRetrieve extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
+        String username;
+        String password;
         HttpURLConnection conn;
         URL url = null;
-        private final String validateUserPHP = "sarepach.cs.loyola.edu/ClientConnection/validateUserLogin.php";
+        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/validateUserInput.php";
+        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
+
+        public AsyncRetrieve(String user, String pass){
+            this.username = user;
+            this.password = pass;
+        }
 
         //this method will interact with UI, here display loading message
         @Override
@@ -158,6 +163,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
+        @Override
+        public void onPostExecute(String result){
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Display Result");
+            alertDialog.setMessage(result);
+            alertDialog.show();
+        }
+
+
 
     }
 }
