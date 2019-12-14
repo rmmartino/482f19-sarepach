@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 conn.setRequestMethod("GET");
 
                 // setDoOutput to true as we receive data from json file
+                conn.setDoInput(true);
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
