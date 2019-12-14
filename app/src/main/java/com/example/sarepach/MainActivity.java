@@ -53,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
                         AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
                         try {
                             String result = asyncTask.execute().get();
+                            if(result.equals("Success")) {
+                                goProfile(null);
+                            }
+                            else {
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Incorrect username/password");
+                            }
                             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                             alertDialog.setTitle("Display Result");
                             alertDialog.setMessage(result);
