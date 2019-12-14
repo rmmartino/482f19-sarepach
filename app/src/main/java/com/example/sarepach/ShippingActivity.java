@@ -32,7 +32,6 @@ public class ShippingActivity extends AppCompatActivity {
         final EditText cityText;
         final EditText stateText;
         final EditText zipcodeText;
-        setContentView(R.layout.activity_signup);
         signUpButton = (Button)findViewById(R.id.submitID);
         houseText = (EditText)findViewById(R.id.houseInput);
         streetText = (EditText)findViewById(R.id.streetInput);
@@ -54,7 +53,7 @@ public class ShippingActivity extends AppCompatActivity {
                                 alertDialog.setTitle("Display Result");
                                 alertDialog.setMessage(result);
                                 alertDialog.show();
-                                submit(null);
+                                //submit(null);
                             } catch (Exception e) {
                                 Log.w("SignUpActivity", e);
 
@@ -96,11 +95,11 @@ public class ShippingActivity extends AppCompatActivity {
         public static final int READ_TIMEOUT = 15000;
 
         public AsyncRetrieve(String house, String street, String city, String state, String zipcode){
-            this.houseIn = "?houseNumber=" + house;
-            this.streetIn = "&street="+  street;
-            this.cityIn = "&town="+  city;
-            this.stateIn = "&state="+  state;
-            this.zipIn = "&zipcode="+  zipcode;
+            this.houseIn = "?houseInput=" + house;
+            this.streetIn = "&streetInput="+  street;
+            this.cityIn = "&townInput="+  city;
+            this.stateIn = "&stateInput="+  state;
+            this.zipIn = "&zipcodeInput="+  zipcode;
 
             Log.w("signupActivity", this.addShipping);
         }

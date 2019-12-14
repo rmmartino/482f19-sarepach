@@ -53,7 +53,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/addressID"
+        android:id="@+id/streetID"
         style="@style/TextStyle"
         android:layout_height="wrap_content"
         android:layout_below="@id/houseID"
@@ -67,7 +67,7 @@
 
 
     <EditText
-        android:id="@+id/addressInput"
+        android:id="@+id/streetInput"
         style="@style/LabelStyle"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
@@ -75,14 +75,14 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/houseID"
-        android:hint="Auction Road"
+        android:hint="*NO SPACES* AuctionRoad"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/cityID"
         style="@style/TextStyle"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addressID"
+        android:layout_below="@id/streetID"
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
@@ -96,7 +96,7 @@
         android:id="@+id/cityInput"
         style="@style/LabelStyle"
         android:layout_width="170dp"
-        android:layout_below="@id/addressInput"
+        android:layout_below="@id/streetInput"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/houseID"
@@ -163,6 +163,7 @@
 
 
     <Button
+        android:id="@+id/submitID"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/zipID"
