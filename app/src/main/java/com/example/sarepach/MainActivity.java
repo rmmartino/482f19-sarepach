@@ -30,6 +30,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static java.lang.String.valueOf;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -92,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
         String password;
         HttpURLConnection conn;
         URL url = null;
-        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/validateUserInput.php?usernameText=";
+        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/validateUserInput.php";
         //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
         public AsyncRetrieve(String user, String pass){
-            this.username = user;
-            this.password = pass;
+            this.username = "?usernameText=" + user;
+            this.password = "&passwordText=" + pass;
         }
 
         //this method will interact with UI, here display loading message
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             try {
                 // Only testing admin code for now (will execute client code instead)
-                url = new URL(validateUserPHP + this.username );
+                url = new URL(validateUserPHP + this.username + this.password );
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -147,7 +149,8 @@ public class MainActivity extends AppCompatActivity {
                 int response_code = conn.getResponseCode();
 
                 // Check if successful connection made
-                if (response_code == HttpURLConnection.HTTP_OK) {
+                Log.w("MainActivity" , valueOf(response_code));
+                if (response_code == HttpURLConnection.HTTP_OK ) {
 
                     // Read data sent from server
                     InputStream input = conn.getInputStream();
@@ -162,7 +165,10 @@ public class MainActivity extends AppCompatActivity {
                     // Pass data to onPostExecute method
                     return (result.toString());
 
-                } else {
+                }
+
+
+                    else {
 
                     return ("unsuccessful");
                 }
