@@ -45,8 +45,16 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view)
                     {
                         AsyncRetrieve asyncTask = new AsyncRetrieve(usernameText.getText().toString(), passwordText.getText().toString());
-                        asyncTask.execute();
+                        try {
+                            String result = asyncTask.execute().get();
+                            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                            alertDialog.setTitle("Display Result");
+                            alertDialog.setMessage(result);
+                            alertDialog.show();
+                        } catch(Exception e){
+                            Log.w("MainActivity", e);
 
+                    }
 
                     }
                 });
@@ -80,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
         String password;
         HttpURLConnection conn;
         URL url = null;
-        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/validateUserInput.php";
-        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
+        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/validateUserInput.php?usernameText=";
+        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
@@ -105,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             try {
                 // Only testing admin code for now (will execute client code instead)
-                url = new URL(validateUserPHP);
+                url = new URL(validateUserPHP + this.username );
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -163,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-
+/**
         @Override
         public void onPostExecute(String result){
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
@@ -171,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.setMessage(result);
             alertDialog.show();
         }
-
+*/
 
 
     }
