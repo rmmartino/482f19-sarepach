@@ -72,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
         public static final int READ_TIMEOUT = 15000;
 
         public AsyncRetrieveProfileBids(){
-            this.username = MainActivity.currentUser.Email;
+            this.username = "?email=" + MainActivity.currentUser.Email;
         }
 
         //this method will interact with UI, here display loading message
