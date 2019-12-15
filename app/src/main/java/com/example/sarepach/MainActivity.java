@@ -62,12 +62,8 @@ public class MainActivity extends AppCompatActivity {
                             else {
                                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                                 alertDialog.setTitle("Incorrect username/password");
+                                alertDialog.show();
                             }
-                            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                            alertDialog.setTitle("Display Result");
-                            alertDialog.setMessage(result);
-                            alertDialog.show();
-                            goProfile(null);
                         } catch(Exception e){
                             Log.w("MainActivity", e);
 
