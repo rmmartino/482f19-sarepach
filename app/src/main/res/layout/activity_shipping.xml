@@ -29,10 +29,34 @@
         />
 
     <TextView
-        android:id="@+id/houseID"
+        android:id="@+id/nameID"
         style="@style/TextStyle"
         android:layout_height="wrap_content"
         android:layout_below="@id/shipTitle"
+        android:layout_alignLeft="@+id/returnToItems"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:text="Name On Card:"
+        android:textSize="18sp"
+        android:layout_width="200dp"/>
+
+    <EditText
+        android:id="@+id/nameInput"
+        style="@style/LabelStyle"
+        android:layout_width="170dp"
+        android:layout_below="@id/shipTitle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/houseID"
+        android:hint="John Smith"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseID"
+        style="@style/TextStyle"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameID"
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
@@ -45,7 +69,7 @@
         android:id="@+id/houseInput"
         style="@style/LabelStyle"
         android:layout_width="170dp"
-        android:layout_below="@id/shipTitle"
+        android:layout_below="@id/nameInput"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/houseID"
@@ -55,7 +79,7 @@
     <TextView
         android:id="@+id/streetID"
         style="@style/TextStyle"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_below="@id/houseID"
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
@@ -95,7 +119,7 @@
     <EditText
         android:id="@+id/cityInput"
         style="@style/LabelStyle"
-        android:layout_width="170dp"
+        android:layout_width="160dp"
         android:layout_below="@id/streetInput"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
@@ -128,7 +152,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_toRightOf="@id/houseID"
+        android:layout_toRightOf="@id/stateID"
         android:hint="MD"
         android:textSize="18sp" />
 
