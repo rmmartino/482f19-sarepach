@@ -52,7 +52,7 @@ public class PaymentActivity extends AppCompatActivity {
                             alertDialog.setTitle("Display Result");
                             alertDialog.setMessage(result);
                             alertDialog.show();
-                            //goShippingInfo(null);
+                            goShippingInfo(null);
                         } catch (Exception e) {
                             Log.w("PaymentAcitivity", e);
 
@@ -118,7 +118,7 @@ public class PaymentActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             try {
                 //url = new URL(addUser + this.username );
-                url = new URL(addPayment + this.nameIn  + this.numberIn + this.expDateIn + this.CSVIn + "&email=" + MainActivity.currentUser.Email );
+                url = new URL(addPayment + this.numberIn + this.nameIn  + this.expDateIn + this.CSVIn + "&email=" + MainActivity.currentUser.Email );
                 Log.w("payment Acitivity", url.toString());
 
             } catch (MalformedURLException e) {
