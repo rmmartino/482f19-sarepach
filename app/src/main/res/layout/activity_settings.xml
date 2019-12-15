@@ -80,6 +80,7 @@
         android:textSize="28sp"
         android:text="Change Password"
         android:layout_below="@+id/address"
+        android:onClick="goChange"
         />
 
 </RelativeLayout>

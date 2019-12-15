@@ -45,12 +45,23 @@
         android:src= "@drawable/profileimage"
         />
 
+    <Button
+        android:id="@+id/donateID"
+        android:layout_below="@id/profilePic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:text="Donate Item"
+        android:onClick="sendEmail"
+        />
+
     <TextView
         android:id="@+id/myBidsLabel"
         style="@style/TextStyle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/profilePic"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/donateID"
         android:textSize="28sp"
         android:text="My Bids:"
         />
