@@ -34,7 +34,7 @@ import static java.lang.String.valueOf;
 
 public class MainActivity extends AppCompatActivity {
 
-    protected User currentUser = null;
+    protected static User currentUser = new User("", "");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
