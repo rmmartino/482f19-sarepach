@@ -53,7 +53,7 @@ public class ShippingActivity extends AppCompatActivity {
                                 alertDialog.setTitle("Display Result");
                                 alertDialog.setMessage(result);
                                 alertDialog.show();
-                                //submit(null);
+                                submit(null);
                             } catch (Exception e) {
                                 Log.w("SignUpActivity", e);
 
@@ -101,6 +101,7 @@ public class ShippingActivity extends AppCompatActivity {
             this.stateIn = "&stateInput="+  state;
             this.zipIn = "&zipcodeInput="+  zipcode;
 
+
             Log.w("signupActivity", this.addShipping);
         }
 
@@ -119,7 +120,7 @@ public class ShippingActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             try {
                 //url = new URL(addUser + this.username );
-                url = new URL(addShipping + this.houseIn  + this.streetIn + this.cityIn + this.stateIn + this.zipIn);
+                url = new URL(addShipping + this.houseIn  + this.streetIn + this.cityIn + this.stateIn + this.zipIn + MainActivity.currentUser.Email );
                 Log.w("shipping Acitivity", url.toString());
 
             } catch (MalformedURLException e) {
