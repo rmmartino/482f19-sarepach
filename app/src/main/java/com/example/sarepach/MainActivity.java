@@ -34,6 +34,8 @@ import static java.lang.String.valueOf;
 
 public class MainActivity extends AppCompatActivity {
 
+    protected User currentUser = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button loginButton;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             String result = asyncTask.execute().get();
                             if(result.equals("Success")) {
+                                currentUser.Email = usernameText.getText().toString();
                                 goProfile(null);
                             }
                             else {
