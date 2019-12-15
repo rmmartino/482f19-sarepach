@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
             String result = asyncTask.execute().get();
             AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
             alertDialog.setTitle("Display Result");
-            alertDialog.setMessage(result);
+            alertDialog.setMessage(result + MainActivity.currentUser.Email);
             alertDialog.show();
         }
         catch(Exception e){
@@ -120,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
                 int response_code = conn.getResponseCode();
 
                 // Check if successful connection made
-                Log.w("MainActivity" , valueOf(response_code));
+                Log.w("ProfileActivity" , valueOf(response_code));
                 if (response_code == HttpURLConnection.HTTP_OK ) {
 
                     // Read data sent from server
@@ -141,7 +141,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 else {
 
-                    return ("unsuccessful");
+                    return ("unsuccessful" + validateUserPHP + this.username);
                 }
 
             } catch (IOException e) {
