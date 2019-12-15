@@ -27,6 +27,7 @@ public class ShippingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shipping);
 
         Button signUpButton;
+        final EditText nameOnCardText;
         final EditText houseText;
         final EditText streetText;
         final EditText cityText;
@@ -38,6 +39,7 @@ public class ShippingActivity extends AppCompatActivity {
         cityText = (EditText)findViewById(R.id.cityInput);
         stateText = (EditText)findViewById(R.id.stateInput);
         zipcodeText = (EditText)findViewById(R.id.zipInput);
+        nameOnCardText = (EditText)findViewById(R.id.nameInput);
 
 
         // Want to wait for user to click login or sign up...
@@ -46,7 +48,7 @@ public class ShippingActivity extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
-                            AsyncRetrieve asyncTask = new AsyncRetrieve(houseText.getText().toString(), streetText.getText().toString() , cityText.getText().toString() , stateText.getText().toString() , zipcodeText.getText().toString());
+                            AsyncRetrieve asyncTask = new AsyncRetrieve(houseText.getText().toString(), streetText.getText().toString() , cityText.getText().toString() , stateText.getText().toString() , zipcodeText.getText().toString() , nameOnCardText.getText().toString().replaceAll("\\s",""));
                             try {
                                 String result = asyncTask.execute().get();
                                 AlertDialog alertDialog = new AlertDialog.Builder(ShippingActivity.this).create();
@@ -86,6 +88,7 @@ public class ShippingActivity extends AppCompatActivity {
         String cityIn;
         String stateIn;
         String zipIn;
+        String nameIn;
 
         HttpURLConnection conn;
         URL url = null;
@@ -94,12 +97,13 @@ public class ShippingActivity extends AppCompatActivity {
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
-        public AsyncRetrieve(String house, String street, String city, String state, String zipcode){
+        public AsyncRetrieve(String house, String street, String city, String state, String zipcode, String name){
             this.houseIn = "?houseInput=" + house;
             this.streetIn = "&streetInput="+  street;
             this.cityIn = "&townInput="+  city;
             this.stateIn = "&stateInput="+  state;
             this.zipIn = "&zipcodeInput="+  zipcode;
+            this.nameIn = "&nameOnCardInput="+  name;
 
 
             Log.w("signupActivity", this.addShipping);
@@ -189,8 +193,6 @@ public class ShippingActivity extends AppCompatActivity {
  }
  */
 
-
     }
-
 
 }
