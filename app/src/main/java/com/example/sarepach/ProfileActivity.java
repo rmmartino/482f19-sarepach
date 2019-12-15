@@ -31,10 +31,10 @@ public class ProfileActivity extends AppCompatActivity {
         try {
             AsyncRetrieveProfileBids asyncTask = new AsyncRetrieveProfileBids();
             String result = asyncTask.execute().get();
-            AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
-            alertDialog.setTitle("Display Result");
-            alertDialog.setMessage(result);
-            alertDialog.show();
+            //AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
+            //alertDialog.setTitle("Display Result");
+            //alertDialog.setMessage(result);
+            //alertDialog.show();
         }
         catch(Exception e){
             Log.w("MainActivity", e);
