@@ -29,10 +29,32 @@
         />
 
     <EditText
+        android:id="@+id/firstID"
+        android:hint="First Name"
+        style="@style/LabelStyle"
+        android:layout_below="@+id/emailID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        />
+
+
+    <EditText
+        android:id="@+id/lastID"
+        android:hint="Last Name"
+        style="@style/LabelStyle"
+        android:layout_below="@+id/firstID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        />
+
+
+    <EditText
         android:id="@+id/passwordID"
         android:hint="@string/password_label"
         style="@style/LabelStyle"
-        android:layout_below="@+id/emailID"
+        android:layout_below="@+id/lastID"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="28sp"
