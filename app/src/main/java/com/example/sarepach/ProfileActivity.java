@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
             String result = asyncTask.execute().get();
             AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
             alertDialog.setTitle("Display Result");
-            alertDialog.setMessage(result + MainActivity.currentUser.Email);
+            alertDialog.setMessage(result);
             alertDialog.show();
         }
         catch(Exception e){
