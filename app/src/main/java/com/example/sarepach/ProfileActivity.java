@@ -1,5 +1,6 @@
 package com.example.sarepach;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
@@ -52,14 +53,13 @@ public class ProfileActivity extends AppCompatActivity {
         String password;
         HttpURLConnection conn;
         URL url = null;
-        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/validateUserInput.php";
+        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/displayProfileBids.php";
         //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
-        public AsyncRetrieveProfileBids(String user, String pass){
-            this.username = "?usernameText=" + user;
-            this.password = "&passwordText=" + pass;
+        public AsyncRetrieveProfileBids(){
+            this.username = MainActivity.currentUser.Email;
         }
 
         //this method will interact with UI, here display loading message
@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             try {
                 // Only testing admin code for now (will execute client code instead)
-                url = new URL(validateUserPHP + this.username + this.password );
+                url = new URL(validateUserPHP + this.username);
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
