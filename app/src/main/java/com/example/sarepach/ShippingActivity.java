@@ -48,14 +48,14 @@ public class ShippingActivity extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
-                            AsyncRetrieve asyncTask = new AsyncRetrieve(houseText.getText().toString(), streetText.getText().toString() , cityText.getText().toString() , stateText.getText().toString() , zipcodeText.getText().toString() , nameOnCardText.getText().toString().replaceAll("\\s",""));
+                            AsyncRetrieve asyncTask = new AsyncRetrieve(houseText.getText().toString(), streetText.getText().toString().replaceAll("\\s","") , cityText.getText().toString().replaceAll("\\s","") , stateText.getText().toString() , zipcodeText.getText().toString() , nameOnCardText.getText().toString().replaceAll("\\s",""));
                             try {
                                 String result = asyncTask.execute().get();
                                 AlertDialog alertDialog = new AlertDialog.Builder(ShippingActivity.this).create();
                                 alertDialog.setTitle("Display Result");
                                 alertDialog.setMessage(result);
                                 alertDialog.show();
-                                submit(null);
+                                //submit(null);
                             } catch (Exception e) {
                                 Log.w("SignUpActivity", e);
 
@@ -124,7 +124,7 @@ public class ShippingActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             try {
                 //url = new URL(addUser + this.username );
-                url = new URL(addShipping + this.houseIn  + this.streetIn + this.cityIn + this.stateIn + this.zipIn + MainActivity.currentUser.Email );
+                url = new URL(addShipping + this.houseIn  + this.streetIn + this.cityIn + this.stateIn + this.zipIn + this.nameIn + "&email=" + MainActivity.currentUser.Email );
                 Log.w("shipping Acitivity", url.toString());
 
             } catch (MalformedURLException e) {

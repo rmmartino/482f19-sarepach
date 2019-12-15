@@ -79,7 +79,7 @@
     <TextView
         android:id="@+id/streetID"
         style="@style/TextStyle"
-        android:layout_height="65dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/houseID"
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
@@ -99,7 +99,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/houseID"
-        android:hint="*NO SPACES* AuctionRoad"
+        android:hint="Auction Road"
         android:textSize="18sp" />
 
     <TextView
