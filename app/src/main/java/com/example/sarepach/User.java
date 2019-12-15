@@ -86,7 +86,7 @@ public class User {
    * @return: None
   */
   User(String email ) {
-    this.Email = "&email=" + email;
+    this.Email = email;
     return;
   }
 
