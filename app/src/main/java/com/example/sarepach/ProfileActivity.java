@@ -4,6 +4,7 @@ import androidx.annotation.MainThread;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,6 +60,13 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         this.startActivity(intent);
     }
+
+    public void sendEmail(View v) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", "abc@gmail.com", null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body");
+        startActivity(Intent.createChooser(emailIntent, "Send email..."));}
 
     protected class AsyncRetrieveProfileBids extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);

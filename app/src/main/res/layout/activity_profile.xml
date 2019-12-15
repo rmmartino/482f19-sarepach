@@ -53,7 +53,7 @@
         android:layout_height="70dp"
         android:layout_width="100dp"
         android:text="Donate Item"
-        android:onClick="returnToItems"
+        android:onClick="sendEmail"
         />
 
     <TextView
