@@ -1,6 +1,7 @@
 package com.example.sarepach;
 
 import androidx.annotation.MainThread;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
@@ -25,6 +26,15 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        try {
+            AsyncRetrieveProfileBids asyncTask = new AsyncRetrieveProfileBids();
+            String result = asyncTask.execute().get();
+            AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
+        }
+        catch(Exception e){
+            Log.w("MainActivity", e);
+        }
     }
 
 
