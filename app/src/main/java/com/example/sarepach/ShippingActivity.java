@@ -27,7 +27,7 @@ public class ShippingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shipping);
 
         Button signUpButton;
-        final EditText nameOnCardText;
+        final EditText nameShippingText;
         final EditText houseText;
         final EditText streetText;
         final EditText cityText;
@@ -39,7 +39,7 @@ public class ShippingActivity extends AppCompatActivity {
         cityText = (EditText)findViewById(R.id.cityInput);
         stateText = (EditText)findViewById(R.id.stateInput);
         zipcodeText = (EditText)findViewById(R.id.zipInput);
-        nameOnCardText = (EditText)findViewById(R.id.nameInput);
+        nameShippingText = (EditText)findViewById(R.id.nameInput);
 
 
         // Want to wait for user to click login or sign up...
@@ -48,14 +48,14 @@ public class ShippingActivity extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
-                            AsyncRetrieve asyncTask = new AsyncRetrieve(houseText.getText().toString(), streetText.getText().toString().replaceAll("\\s","") , cityText.getText().toString().replaceAll("\\s","") , stateText.getText().toString() , zipcodeText.getText().toString() , nameOnCardText.getText().toString().replaceAll("\\s",""));
+                            AsyncRetrieve asyncTask = new AsyncRetrieve(houseText.getText().toString(), streetText.getText().toString().replaceAll("\\s","") , cityText.getText().toString().replaceAll("\\s","") , stateText.getText().toString() , zipcodeText.getText().toString() , nameShippingText.getText().toString().replaceAll("\\s",""));
                             try {
                                 String result = asyncTask.execute().get();
                                 AlertDialog alertDialog = new AlertDialog.Builder(ShippingActivity.this).create();
                                 alertDialog.setTitle("Display Result");
                                 alertDialog.setMessage(result);
                                 alertDialog.show();
-                                //submit(null);
+                                submit(null);
                             } catch (Exception e) {
                                 Log.w("SignUpActivity", e);
 
@@ -103,7 +103,7 @@ public class ShippingActivity extends AppCompatActivity {
             this.cityIn = "&townInput="+  city;
             this.stateIn = "&stateInput="+  state;
             this.zipIn = "&zipcodeInput="+  zipcode;
-            this.nameIn = "&nameOnCardInput="+  name;
+            this.nameIn = "&nameShippingInput="+  name;
 
 
             Log.w("signupActivity", this.addShipping);
