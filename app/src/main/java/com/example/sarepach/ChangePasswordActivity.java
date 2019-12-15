@@ -1,18 +1,22 @@
 package com.example.sarepach;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class SettingsActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ChangePasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_changepassword);
     }
 
 
@@ -25,8 +29,8 @@ public class SettingsActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    public void goChange(View v) {
-        Intent intent = new Intent(this, ChangePasswordActivity.class);
+    public void goDescription(View v) {
+        Intent intent = new Intent(this, DescriptionActivity.class);
         this.startActivity(intent);
     }
 
