@@ -86,7 +86,7 @@ public class User {
    * @return: None
   */
   User(String email, String password ) {
-    this.Email = email;
+    this.Email = "&email=" + email;
     this.Password = password;
     return;
   }
