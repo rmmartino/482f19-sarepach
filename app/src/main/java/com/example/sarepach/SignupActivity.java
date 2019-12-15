@@ -59,7 +59,7 @@ public class SignupActivity extends AppCompatActivity {
                                 alertDialog.setTitle("Display Result");
                                 alertDialog.setMessage(result);
                                 alertDialog.show();
-                                //returnToItems(null);
+                                returnToItems(null);
                             } catch (Exception e) {
                                 Log.w("SignUpActivity", e);
 

@@ -103,8 +103,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
         public static final int READ_TIMEOUT = 15000;
 
         public AsyncRetrieve(String old, String newpass, String conf){
-            this.oldPassIn = "?oldpassword=" + old;
-            this.newPassIn = "&password="+  newpass;
+            this.oldPassIn = "?oldPassword=" + old;
+            this.newPassIn = "&newPassword="+  newpass;
 
 
             Log.w("change pass", this.changePass);
