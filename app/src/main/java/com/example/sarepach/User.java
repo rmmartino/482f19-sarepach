@@ -85,9 +85,8 @@ public class User {
    * @param: passworfd - User's password
    * @return: None
   */
-  User(String email, String password ) {
+  User(String email ) {
     this.Email = "&email=" + email;
-    this.Password = password;
     return;
   }
 
