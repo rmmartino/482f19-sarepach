@@ -99,8 +99,9 @@ public class ProfileActivity extends AppCompatActivity {
      * @param v
      *            the screen view
      */
-    public void goDescription(View v) {
+    public void goDescription(View v, String item) {
         Intent intent = new Intent(this, DescriptionActivity.class);
+        //intent.putExtra()
         this.startActivity(intent);
     }
 
@@ -239,6 +240,23 @@ public class ProfileActivity extends AppCompatActivity {
         button.setBackgroundColor(Color.parseColor("#DDDDDD"));
         button.setHeight(200);
         button.setWidth(250);
+        button.setOnClickListener(
+                new View.OnClickListener( )
+                {
+                    /**
+                     * Sets up the screen that follows after the user clicks on a
+                     * button on the first screen
+                     *
+                     * @param view
+                     *            the screen view
+                     */
+                    public void onClick(View view)
+                    {
+                        // Have to get item id from the item clicked on then pass it to description activity
+                        //goDescription(null, item );
+
+                    }
+                });
 
         String isTopBidder = (item.split(";")[3]).trim();
         if (isTopBidder.equals("true")){
@@ -250,6 +268,22 @@ public class ProfileActivity extends AppCompatActivity {
 
         v.addView(button);
     }
+
+    protected class MyLovelyOnClickListener implements View.OnClickListener
+    {
+
+        String itemName;
+        public MyLovelyOnClickListener(String itemName) {
+            //this.myLovelyVariable = myLovelyVariable;
+        }
+
+        @Override
+        public void onClick(View v)
+        {
+            //read your lovely variable
+        }
+
+    };
 
     /**
      * This is a AsyncRetrieveProfileBids class that uses the Android Studio library,
