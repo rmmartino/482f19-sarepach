@@ -4,18 +4,25 @@ import androidx.annotation.MainThread;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
 
 
 
@@ -100,6 +107,9 @@ public class ProfileActivity extends AppCompatActivity {
             v.addView(tableRow);
             // Add text view to the new row
             addTextView(tableRow, item);
+            addButton(tableRow, item);
+            addImage(tableRow, item);
+
         }catch (Exception e) {
             Log.w("ProfileActivityTableRow", e);
         }
@@ -114,10 +124,24 @@ public class ProfileActivity extends AppCompatActivity {
         TextView textView = new TextView(getApplicationContext());
         //textView.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //textView.setLayoutParams(layoutParams);
-        textView.setText(item);
+        textView.setTextSize(24f);
+        textView.setTextColor(Color.BLACK);
+        textView.setBackgroundColor(Color.parseColor("#7EBAD1"));
+        textView.setPadding(0, 10, 0, 0);
+        textView.setText(item.split(";")[0]);
         v.addView(textView);
 
+    }
 
+    public void addButton(TableRow v, String item){
+        Button button = new Button(this);
+        //button.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
+        //button.setLayoutParams(layoutParams);
+        button.setTextSize(24f);
+        button.setTextColor(Color.BLACK);
+        button.setBackgroundColor(Color.parseColor("#7EBAD1"));
+        button.setText(item.split(";")[3]);
+        v.addView(button);
 
     }
 
