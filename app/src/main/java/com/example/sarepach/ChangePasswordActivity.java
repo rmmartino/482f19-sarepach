@@ -85,7 +85,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     /**
      * Opens the app on the start
-     *
      */
     public void onStart() {
         super.onStart();

@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Opens the app on the start
-     *
      */
     public void onStart() {
         super.onStart();
