@@ -19,8 +19,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * This is a PaymentActivity class that corresponds with the screen of the app that
+ * has the user input their payment information after bidding on an item
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
 public class PaymentActivity extends AppCompatActivity {
 
+    /**
+     * Creates the screen of the app asking the user for their payment information
+     *
+     * @param savedInstanceState
+     *            the previous state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,22 +75,45 @@ public class PaymentActivity extends AppCompatActivity {
                 });
     }
 
-
+    /**
+     * Opens the app on the start
+     */
     public void onStart() {
         super.onStart();
     }
 
-
+    /**
+     * Sets up the screen with the items on it
+     *
+     * @param v
+     *            the screen view
+     */
     public void returnToItems(View v) {
         Intent intent = new Intent(this, ItemsActivity.class);
         this.startActivity(intent);
     }
 
-    public void goShippingInfo(View w) {
+    /**
+     * Sets up the screen that asks the user for their shipping information
+     *
+     * @param v
+     *            the screen view
+     */
+    public void goShippingInfo(View v) {
         Intent intent = new Intent(this, ShippingActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * This is a AsyncRetrieve class that uses the Android Studio library,
+     * AsyncTask which allows for the communication between the server and the app.
+     * This connects with the addPayment php file in the server which retrieves the
+     * payment information inputted by the user on the app and puts it into the
+     * database table in the row corresponding to the specific user
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class AsyncRetrieve extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String nameIn;
@@ -93,6 +129,18 @@ public class PaymentActivity extends AppCompatActivity {
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
+        /**
+         * Retrieves the credit card number, expiration date, csv, and name on the card
+         *
+         * @param number
+         *            the number of the credit card
+         * @param expDate
+         *            the expiration date of the credit card
+         * @param csv
+         *            the csv of the credit card
+         * @param nameoncard
+         *            the name on the credit card
+         */
         public AsyncRetrieve(String number, String expDate, String csv, String nameoncard){
             this.numberIn = "?creditCard=" + number;
             this.expDateIn = "&expirationDate="+  expDate;
@@ -103,7 +151,9 @@ public class PaymentActivity extends AppCompatActivity {
             Log.w("payment", this.addPayment);
         }
 
-        //this method will interact with UI, here display loading message
+        /**
+         * This will interact with UI and display loading message
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -114,12 +164,21 @@ public class PaymentActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * This connects with the addPayment php file on the server to add the credit
+         * card information to the database table in the row of the corresponding user
+         *
+         * @param params
+         *
+         * @return the output from the php file if it connects successfully, "unsuccessful" if
+         * it doesn't connect successfully
+         */
         @Override
         public String doInBackground(String... params) {
             try {
                 //url = new URL(addUser + this.username );
                 url = new URL(addPayment + this.numberIn + this.nameIn  + this.expDateIn + this.CSVIn + "&email=" + MainActivity.currentUser.Email );
-                Log.w("payment Acitivity", url.toString());
+                Log.w("Payment Activity", url.toString());
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
