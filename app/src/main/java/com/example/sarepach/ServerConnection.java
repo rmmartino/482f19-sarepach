@@ -128,8 +128,5 @@ public class ServerConnection {
 //        //Make call to AsyncRetrieve
 //        new AsyncRetrieve().execute();
  //   }
-
-
-
 }
 
