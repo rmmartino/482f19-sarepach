@@ -10,6 +10,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,9 +35,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        String result = "";
+
         try {
             AsyncRetrieveProfileBids asyncTask = new AsyncRetrieveProfileBids();
-            String result = asyncTask.execute().get();
+            result = asyncTask.execute().get();
             //AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
             //alertDialog.setTitle("Display Result");
             //alertDialog.setMessage(result);
@@ -39,6 +48,8 @@ public class ProfileActivity extends AppCompatActivity {
         catch(Exception e){
             Log.w("MainActivity", e);
         }
+        ViewGroup tableLayout = (ViewGroup) findViewById(R.id.tableLayout);
+        addItemEntitys(tableLayout, result);
     }
 
 
@@ -66,6 +77,36 @@ public class ProfileActivity extends AppCompatActivity {
         alertDialog.setMessage("Please send an email to auctionBSO@gmail.com" );
         alertDialog.show();
         }
+
+    // will eventually parse through all items
+    public void addItemEntitys(View v, String item){
+        // First add a table row to the table layout
+        addTableRow(v, item);
+
+    }
+
+    public void addTableRow(View v, String item) {
+        // Add table row entry to the table layout
+        TableRow tableRow = new TableRow(getApplicationContext());
+        tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+        // Add text view to the new row
+        addTextView(tableRow, item);
+        //addButton();
+        //ImageView imageView = new ImageView(getApplicationContext());
+        //TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
+        //imageView.setLayoutParams(layoutParams);
+    }
+
+    public void addTextView(View v, String item){
+        TextView textView = new TextView(getApplicationContext());
+        TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
+        textView.setLayoutParams(layoutParams);
+        textView.setText(item);
+
+        //v.addView(textView);
+
+    }
 
     protected class AsyncRetrieveProfileBids extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
