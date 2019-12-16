@@ -73,39 +73,41 @@ public class MainActivity extends AppCompatActivity {
                     {
                         //Date todayDate = new Date();
 
-                        String currentTime = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-                        //String timeToCompare = "01-01-2020 12:01";
-
-                        Date today = new Date();
-                        Date expired = new Date();
-                        String resulttime = " ";
-
-
-                        SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
-                        try {
-                             today = sdformat.parse(currentTime);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        try {
-                             expired = sdformat.parse("12-01-2019");
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-
-                        if(today.compareTo(expired) > 0) {
-                            //resulttime = "TODAY occurs after EXPIRED";
-                            AlertDialog alertDialogTime = new AlertDialog.Builder(MainActivity.this).create();
-                            alertDialogTime.setTitle("Auction is Closed");
-                            alertDialogTime.setMessage("Check your email to see if you were a winner!");
-                            alertDialogTime.show();
-                        }
-
 
                         AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
                         try {
+
                             String result = asyncTask.execute().get();
-                            if(result.equals("Success")) {
+
+                            String currentTime = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+                            //String timeToCompare = "01-01-2020 12:01";
+
+                            Date today = new Date();
+                            Date expired = new Date();
+                            String resulttime = " ";
+
+
+                            SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
+                            try {
+                                today = sdformat.parse(currentTime);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+                                expired = sdformat.parse("01-01-2020");
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                            if(today.compareTo(expired) > 0) {
+                                //resulttime = "TODAY occurs after EXPIRED";
+                                AlertDialog alertDialogTime = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialogTime.setTitle("Auction is Closed");
+                                alertDialogTime.setMessage("Check your email to see if you were a winner!");
+                                alertDialogTime.show();
+                                //revert(null);
+                            }
+                            else if(result.equals("Success")) {
                                 currentUser = new User(usernameText.getText().toString());
                                 goProfile(null);
                             }
@@ -141,6 +143,20 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProfileActivity.class);
         this.startActivity(intent);
     }
+
+
+    /**
+     * Sets up the screen that follows after the user enters their email and
+     * password and then clicks the login button
+     *
+     * @param v
+     *            the screen view
+     */
+    public void revert(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        this.startActivity(intent);
+    }
+
 
     /**
      * Sets up the screen that follows after the user clicks the signup button
