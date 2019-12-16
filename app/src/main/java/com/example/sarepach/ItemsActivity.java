@@ -2,6 +2,7 @@ package com.example.sarepach;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -49,6 +50,10 @@ public class ItemsActivity extends AppCompatActivity {
             allItems = asyncRetrieveBids.execute().get();
             TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
             addItemEntitys(tableLayout, allItems);
+            AlertDialog alertDialog = new AlertDialog.Builder(ItemsActivity.this).create();
+            alertDialog.setTitle("Incorrect username/password");
+            alertDialog.setMessage(allItems);
+            alertDialog.show();
         } catch(Exception e){
             Log.w("ItemsActivity", "Error loading all items: " +  e);
         }
@@ -186,7 +191,7 @@ public class ItemsActivity extends AppCompatActivity {
         String password;
         HttpURLConnection conn;
         URL url = null;
-        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/displayBids.php";
+        private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/displayItems.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 

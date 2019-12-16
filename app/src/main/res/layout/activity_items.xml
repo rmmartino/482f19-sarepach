@@ -72,15 +72,23 @@
         android:layout_toRightOf="@id/filter"
         android:background="@drawable/search" />
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@color/lightGrey"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/searchID"
-        android:divider="@color/darkGrey"
-        android:shrinkColumns="1"
         >
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/lightGrey"
+            android:layout_below="@+id/searchID"
+            android:divider="@color/darkGrey"
+            android:shrinkColumns="1"
+            >
 
+
+<!--
         <TableRow>
 
         <ImageView
@@ -132,8 +140,10 @@
 
 
         </TableRow>
+        -->
 
-    </TableLayout>
+        </TableLayout>
+    </ScrollView>
 
 </RelativeLayout>
 
