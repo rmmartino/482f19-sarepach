@@ -25,7 +25,7 @@ public class UserSession {
    * Each UserSession will also have a live ServerConnection object to send requests to
   */
   protected ServerConnection CurrentConnection;
-  
+
   /**
    * This is a constructor for an instance of UserSession
    *
