@@ -71,11 +71,36 @@ public class MainActivity extends AppCompatActivity {
                      */
                     public void onClick(View view)
                     {
-                        Date todayDate = new Date();
+                        //Date todayDate = new Date();
 
-                        AlertDialog alertDialogTime = new AlertDialog.Builder(MainActivity.this).create();
-                        alertDialogTime.setTitle("Current Time is " + todayDate.getTime());
-                        alertDialogTime.show();
+                        String currentTime = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+                        //String timeToCompare = "01-01-2020 12:01";
+
+                        Date today = new Date();
+                        Date expired = new Date();
+                        String resulttime = " ";
+
+
+                        SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
+                        try {
+                             today = sdformat.parse(currentTime);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                             expired = sdformat.parse("12-01-2019");
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(today.compareTo(expired) > 0) {
+                            //resulttime = "TODAY occurs after EXPIRED";
+                            AlertDialog alertDialogTime = new AlertDialog.Builder(MainActivity.this).create();
+                            alertDialogTime.setTitle("Auction is Closed");
+                            alertDialogTime.setMessage("Check your email to see if you were a winner!");
+                            alertDialogTime.show();
+                        }
+
 
                         AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
                         try {
