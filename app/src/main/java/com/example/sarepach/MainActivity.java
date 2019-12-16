@@ -1,7 +1,3 @@
-/**
- * @author
- */
-
 package com.example.sarepach;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,10 +28,25 @@ import java.net.URL;
 
 import static java.lang.String.valueOf;
 
+/**
+ * This is a MainActivity class that corresponds with the first screen of the app that
+ * includes the login and sign up of users and goes to the next screen based on users choice
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     protected static User currentUser = null;
 
+    /**
+     * Creates the first screen of the app asking the user to sign in or sign up and
+     * goes to the next screen based on users choice
+     *
+     * @param savedInstanceState
+     *            the previous state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button loginButton;
@@ -50,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(
                 new View.OnClickListener()
                 {
+                    /**
+                     * Sets up the screen that follows after the user clicks on a
+                     * button on the first screen
+                     *
+                     * @param view
+                     *            the screen view
+                     */
                     public void onClick(View view)
                     {
                         AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
@@ -71,30 +89,49 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
-
-
-
     }
 
-
+    /**
+     * Opens the app on the start
+     *
+     */
     public void onStart() {
         super.onStart();
     }
 
-
+    /**
+     * Sets up the screen that follows after the user enters their email and
+     * password and then clicks the login button
+     *
+     * @param v
+     *            the screen view
+     */
     public void goProfile(View v) {
         Intent intent = new Intent(this, ProfileActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * Sets up the screen that follows after the user clicks the signup button
+     * on the first screen
+     *
+     * @param v
+     *            the screen view
+     */
     public void gosignup(View v) {
         Intent intent = new Intent(this, SignupActivity.class);
         this.startActivity(intent);
     }
 
-
-
+    /**
+     * This is a AsyncValidateUserInfo class that uses the Android Studio library,
+     * AsyncTask which allows for the communication between the server and the app.
+     * This validates the email and password of the user to make sure they're a
+     * correct combination in the database.
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class AsyncValidateUserInfo extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String username;
@@ -102,16 +139,26 @@ public class MainActivity extends AppCompatActivity {
         HttpURLConnection conn;
         URL url = null;
         private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/validateUserInput.php";
-        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
+        /**
+         * Retrieves the username and password of the user
+         *
+         * @param user
+         *            the username (email) of the user
+         * @param pass
+         *            the password of the user
+         */
         public AsyncValidateUserInfo(String user, String pass){
             this.username = "?usernameText=" + user;
             this.password = "&passwordText=" + pass;
         }
 
-        //this method will interact with UI, here display loading message
+        /**
+         * This will interact with UI and display loading message
+         *
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -122,6 +169,16 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * This connects with the validateUserInput php file on the server to check
+         * that the username (email) and password combination entered by the user
+         * are in the database
+         *
+         * @param params
+         *
+         * @return the output from the php file if it connects successfully, "unsuccessful" if
+         * it doesn't connect successfully
+         */
         @Override
         public String doInBackground(String... params) {
             try {
