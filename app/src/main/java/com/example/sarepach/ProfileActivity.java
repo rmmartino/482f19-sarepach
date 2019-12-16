@@ -29,8 +29,21 @@ import java.net.URL;
 
 import static java.lang.String.valueOf;
 
+/**
+ * This is a ProfileActivity class that corresponds with the screen of the app that
+ * displays the profile page of the user
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
 public class ProfileActivity extends AppCompatActivity {
 
+    /**
+     * Creates the screen of the app the shows the profile page of the user
+     *
+     * @param savedInstanceState
+     *            the previous state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,32 +68,68 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Opens the app on the start
+     */
     public void onStart() {
         super.onStart();
     }
 
+    /**
+     * Sets up the screen with the items on it
+     *
+     * @param v
+     *            the screen view
+     */
     public void returnToItems(View v) {
         Intent intent = new Intent(this, ItemsActivity.class);
         this.startActivity(intent);
     }
+
+    /**
+     * Sets up the screen that goes to the description of an item page
+     *
+     * @param v
+     *            the screen view
+     */
     public void goDescription(View v) {
         Intent intent = new Intent(this, DescriptionActivity.class);
         this.startActivity(intent);
     }
 
-
+    /**
+     * Sets up the screen that goes to the settings page
+     *
+     * @param v
+     *            the screen view
+     */
     public void gosettings(View v) {
         Intent intent = new Intent(this, SettingsActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * Sets up the screen that displays the message that tells the user who to email
+     * when they want to donate an item for auction
+     *
+     * @param v
+     *            the screen view
+     */
     public void sendEmail(View v) {
         AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
         alertDialog.setMessage("Please send an email to auctionBSO@gmail.com" );
         alertDialog.show();
         }
 
+    /**
+     * Adds an item to a table to display the items the user as bidded on
+     * for their profile page
+     *
+     * @param v
+     *            the screen view
+     * @param item
+     *            the item being added
+     */
     // will eventually parse through all items
     public void addItemEntitys(TableLayout v, String item){
         String[] items_to_display = item.split("_");
@@ -91,6 +140,14 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Adds a row to the table to display more items
+     *
+     * @param v
+     *            the screen view
+     * @param item
+     *            the item being added
+     */
     public void addTableRow(TableLayout v, String item) {
         try {
             // Add table row entry to the table layout
@@ -107,20 +164,33 @@ public class ProfileActivity extends AppCompatActivity {
         //ImageView imageView = new ImageView(getApplicationContext());
         //TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //imageView.setLayoutParams(layoutParams);
-
     }
 
+    /**
+     * Adds a text view to allow more items to be displayed
+     *
+     * @param v
+     *            the screen view
+     * @param item
+     *            the item being added
+     */
     public void addTextView(TableRow v, String item){
         TextView textView = new TextView(getApplicationContext());
         //textView.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //textView.setLayoutParams(layoutParams);
         textView.setText(item);
         v.addView(textView);
-
-
-
     }
 
+    /**
+     * This is a AsyncRetrieveProfileBids class that uses the Android Studio library,
+     * AsyncTask which allows for the communication between the server and the app.
+     * This connects with the validateUser php file in the server which checks if the username
+     * and password combination of the user are correct.
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class AsyncRetrieveProfileBids extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String username;
@@ -128,15 +198,19 @@ public class ProfileActivity extends AppCompatActivity {
         HttpURLConnection conn;
         URL url = null;
         private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/displayProfileBids.php";
-        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
+        /**
+         * Retrieves the username (email) of the user
+         */
         public AsyncRetrieveProfileBids(){
             this.username = "?email=" + MainActivity.currentUser.Email;
         }
 
-        //this method will interact with UI, here display loading message
+        /**
+         * This will interact with UI and display loading message
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -144,9 +218,18 @@ public class ProfileActivity extends AppCompatActivity {
             //pdLoading.setMessage("\tLoading...");
             //pdLoading.setCancelable(false);
             //pdLoading.show();
-
         }
 
+        /**
+         * This connects with the validateUser php file on the server to check
+         * that the email and password of the user is a correct combination in the
+         * database table
+         *
+         * @param params
+         *
+         * @return the output from the php file if it connects successfully, "unsuccessful" if
+         * it doesn't connect successfully
+         */
         @Override
         public String doInBackground(String... params) {
             try {
@@ -226,7 +309,5 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     }
-
-
 }
 
