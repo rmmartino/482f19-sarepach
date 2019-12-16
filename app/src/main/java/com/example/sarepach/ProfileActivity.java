@@ -160,12 +160,14 @@ public class ProfileActivity extends AppCompatActivity {
             // Add table row entry to the table layout
             TableRow tableRow = new TableRow(getApplicationContext());
 
-            //tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+            tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, 200));
             v.addView(tableRow);
-            // Add text view to the new row
+
+            // Add  view to the new row
+            addImageView(tableRow, item);
             addTextView(tableRow, item);
             addButton(tableRow, item);
-            //addImage(tableRow, item);
+
 
         }catch (Exception e) {
             Log.w("ProfileActivityTableRow", e);
@@ -175,6 +177,27 @@ public class ProfileActivity extends AppCompatActivity {
         //TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //imageView.setLayoutParams(layoutParams);
     }
+
+    /**
+     * Adds a image view to allow more items to be displayed
+     *
+     * @param v
+     *            the screen view
+     * @param item
+     *            the item being added
+     */
+    public void addImageView(TableRow v, String item){
+        ImageView imageView = new ImageView(getApplicationContext());
+
+        imageView.setImageResource(R.drawable.bsoshort);
+        //imageView.setMaxHeight(2);
+        //imageView.getLayoutParams().width=150;
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        v.addView(imageView, 200 ,200);
+
+    }
+
 
     /**
      * Adds a text view to allow more items to be displayed
@@ -187,14 +210,16 @@ public class ProfileActivity extends AppCompatActivity {
     public void addTextView(TableRow v, String item){
         TextView textView = new TextView(getApplicationContext());
         //textView.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
-        //textView.setLayoutParams(layoutParams);
+        //textView.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
+
         textView.setTextSize(24f);
         textView.setTextColor(Color.BLACK);
         textView.setBackgroundColor(Color.parseColor("#7EBAD1"));
 
         textView.setText(item.split(";")[0]);
-        textView.setHeight(300);
-        textView.setWidth(700);
+        textView.setHeight(200);
+        textView.setWidth(600);
+        //textView.setPadding(0,0,0,0);
         v.addView(textView);
 
     }
@@ -203,10 +228,21 @@ public class ProfileActivity extends AppCompatActivity {
         Button button = new Button(this);
         //button.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //button.setLayoutParams(layoutParams);
-        button.setTextSize(24f);
+        button.setTextSize(22f);
         button.setTextColor(Color.BLACK);
         button.setBackgroundColor(Color.parseColor("#7EBAD1"));
-        button.setText(item.split(";")[3]);
+        button.setHeight(200);
+        button.setWidth(250);
+
+        String isTopBidder = (item.split(";")[3]).trim();
+        if (isTopBidder.equals("true")){
+            button.setText("You\'re Winning!");
+        }
+        else{
+            button.setText("You\'ve been outbid!");
+        }
+
+
 
         v.addView(button);
     }
