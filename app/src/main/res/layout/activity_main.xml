@@ -20,8 +20,11 @@
         style="@style/LabelStyle"
         android:layout_below="@+id/logoID"
         android:layout_centerHorizontal="true"
+        android:maxLines="1"
         android:layout_marginTop="10dp"
         android:textSize="28sp"
+        android:inputType="textEmailAddress"
+        android:ems="8"
         />
 
     <EditText
@@ -34,6 +37,7 @@
         android:layout_marginTop="10dp"
         android:textSize="28sp"
         android:inputType="textPassword"
+        android:ems="8"
         />
 
 
