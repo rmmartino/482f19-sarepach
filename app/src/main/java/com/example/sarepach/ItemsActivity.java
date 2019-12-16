@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -124,13 +125,16 @@ public class ItemsActivity extends AppCompatActivity {
         try {
             // Add table row entry to the table layout
             TableRow tableRow = new TableRow(getApplicationContext());
+            tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, 200));
+            tableRow.setBackgroundColor(Color.parseColor("#7EBAD1"));
 
             //tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
             v.addView(tableRow);
             // Add text view to the new row
-            addTextView(tableRow, item);
+            //addTextView(tableRow, item);
+            addImageView(tableRow, item);
             addButton(tableRow, item);
-            //addImage(tableRow, item);
+
 
         }catch (Exception e) {
             Log.w("ProfileActivityTableRow", e);
@@ -164,14 +168,35 @@ public class ItemsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Adds a image view to allow more items to be displayed
+     *
+     * @param v
+     *            the screen view
+     * @param item
+     *            the item being added
+     */
+    public void addImageView(TableRow v, String item){
+        ImageView imageView = new ImageView(getApplicationContext());
+
+        imageView.setImageResource(R.drawable.bsoshort);
+
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        v.addView(imageView, 200 ,200);
+
+    }
+
     public void addButton(TableRow v, String item){
         Button button = new Button(this);
         //button.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //button.setLayoutParams(layoutParams);
         button.setTextSize(24f);
         button.setTextColor(Color.BLACK);
-        button.setBackgroundColor(Color.parseColor("#7EBAD1"));
-        button.setText(item.split(";")[3]);
+        button.setBackgroundColor(Color.parseColor("#DDDDDD"));
+        button.setText(item.split(";")[0]);
+        button.setHeight(200);
+        button.setWidth(1000);
 
         v.addView(button);
     }

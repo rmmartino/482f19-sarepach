@@ -161,6 +161,8 @@ public class ProfileActivity extends AppCompatActivity {
             TableRow tableRow = new TableRow(getApplicationContext());
 
             tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, 200));
+            tableRow.setBackgroundColor(Color.parseColor("#DDDDDD"));
+
             v.addView(tableRow);
 
             // Add  view to the new row
@@ -192,6 +194,7 @@ public class ProfileActivity extends AppCompatActivity {
         imageView.setImageResource(R.drawable.bsoshort);
         //imageView.setMaxHeight(2);
         //imageView.getLayoutParams().width=150;
+
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
         v.addView(imageView, 200 ,200);
@@ -214,12 +217,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         textView.setTextSize(24f);
         textView.setTextColor(Color.BLACK);
-        textView.setBackgroundColor(Color.parseColor("#7EBAD1"));
+        textView.setBackgroundColor(Color.parseColor("#DDDDDD"));
 
         textView.setText(item.split(";")[0]);
         textView.setHeight(200);
-        textView.setWidth(600);
-        //textView.setPadding(0,0,0,0);
+        textView.setWidth(700);
         v.addView(textView);
 
     }
@@ -228,9 +230,9 @@ public class ProfileActivity extends AppCompatActivity {
         Button button = new Button(this);
         //button.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //button.setLayoutParams(layoutParams);
-        button.setTextSize(22f);
+        button.setTextSize(16f);
         button.setTextColor(Color.BLACK);
-        button.setBackgroundColor(Color.parseColor("#7EBAD1"));
+        button.setBackgroundColor(Color.parseColor("#DDDDDD"));
         button.setHeight(200);
         button.setWidth(250);
 
@@ -241,8 +243,6 @@ public class ProfileActivity extends AppCompatActivity {
         else{
             button.setText("You\'ve been outbid!");
         }
-
-
 
         v.addView(button);
     }
