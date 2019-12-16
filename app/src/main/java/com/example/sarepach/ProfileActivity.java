@@ -123,10 +123,14 @@ public class ProfileActivity extends AppCompatActivity {
      *            the screen view
      */
     public void sendEmail(View v) {
-        AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
-        alertDialog.setMessage("Please send an email to auctionBSO@gmail.com" );
-        alertDialog.show();
-        }
+//        AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
+//        alertDialog.setMessage("Please send an email to auctionBSO@gmail.com" );
+//        alertDialog.show();
+        Intent mailIntent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.parse("mailto:?subject=" + "Auction Donation" + "&to=" + "raunak@loyola.edu");
+        mailIntent.setData(data);
+        startActivity(Intent.createChooser(mailIntent, "Send mail..."));
+    }
 
     /**
      * Adds an item to a table to display the items the user as bidded on
