@@ -23,8 +23,22 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * This is a SignupActivity class that corresponds with the screen of the app that
+ * allows the user to signup for the first time
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
 public class SignupActivity extends AppCompatActivity {
 
+    /**
+     * Creates the screen of the app that allows the user to signup and make an account
+     * for the first time by inputting their information
+     *
+     * @param savedInstanceState
+     *            the previous state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,22 +91,46 @@ public class SignupActivity extends AppCompatActivity {
                 });
     }
 
-
+    /**
+     * Opens the app on the start
+     */
     public void onStart() {
         super.onStart();
     }
 
-
-    public void cancel(View w) {
+    /**
+     * Sets up the screen that comes up when the user clicks the 'cancel' button during
+     * the signup phase. It brings the user back to the first page that gives them the option
+     * to signup or make an account.
+     *
+     * @param v
+     *            the screen view
+     */
+    public void cancel(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * Sets up the screen that displays all of the items available to bid on
+     *
+     * @param v
+     *            the screen view
+     */
     public void returnToItems(View v) {
         Intent intent = new Intent(this, ItemsActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * This is a AsyncRetrieve class that uses the Android Studio library,
+     * AsyncTask which allows for the communication between the server and the app.
+     * This connects with the addUser php file in the server which adds the new user to the
+     * database table after they signup.
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class AsyncRetrieve extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String username;
@@ -108,6 +146,19 @@ public class SignupActivity extends AppCompatActivity {
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
+        /**
+         * Retrieves the users information that they inputted when signing up (their username,
+         * password, first name, and last name)
+         *
+         * @param user
+         *            the username of the user signing up
+         * @param pass
+         *            the password of the user signing up
+         * @param first
+         *            the first name of the user signing up
+         * @param last
+         *            the last name of the user signing up
+         */
         public AsyncRetrieve(String user, String pass, String first, String last){
             this.username = user;
             this.username = "?email=" + user;
@@ -118,7 +169,9 @@ public class SignupActivity extends AppCompatActivity {
             Log.w("signupActivity", this.addUser);
         }
 
-        //this method will interact with UI, here display loading message
+        /**
+         * This will interact with UI and display loading message
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -129,6 +182,15 @@ public class SignupActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * This connects with the addUser php file on the server to add the new user to the
+         * database table after signing up
+         *
+         * @param params
+         *
+         * @return the output from the php file if it connects successfully, "unsuccessful" if
+         * it doesn't connect successfully
+         */
         @Override
         public String doInBackground(String... params) {
             try {

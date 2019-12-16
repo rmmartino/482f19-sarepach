@@ -9,9 +9,11 @@ import java.util.*;
 import java.lang.*;
 
 /**
- * Class will represent an instance of a User
-*/
-
+ * This is a User class that represents an instance of a User
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
 public class User {
 
   /**
@@ -80,24 +82,32 @@ public class User {
   protected int CSV;
 
   /**
-   * User constructor, we only require email and password for initial sign up and sign in so thats all we require for this constructor
-   * @param: email - User's email address
-   * @param: passworfd - User's password
-   * @return: None
-  */
-  User(String email ) {
+   * Constructor that takes in just the email and password because that's all that's required for
+   * initial signup and sign in
+   *
+   * @param: email
+   *            User's email address
+   * @param: password
+   *            User's password
+   */
+  User(String email) {
     this.Email = email;
     return;
   }
 
   /**
-   * When user gives address information update it accordingly
-   * @param: streetname - User's street name
-   * @param: city - User's city
-   * @param: state - User's state
-   * @param: housenumber - User's house number
-   * @param: zipcode - User's zipcode
-   * @return: None
+   * Updates the address of the user when they put that information in
+   *
+   * @param: streetname
+   *              User's street name
+   * @param: city
+   *              User's city
+   * @param: state
+   *              User's state
+   * @param: housenumber
+   *              User's house number
+   * @param: zipcode
+   *              User's zipcode
   */
   public void UpdateAddress(String streetname, String city, String state, int housenumber, int zipcode) {
     this.StreetName = streetname;
@@ -109,11 +119,14 @@ public class User {
   }
 
   /**
-   * When user gives credit card info update it accordingly
-   * @param: creditcardnumber - User's credit card number
-   * @param: expdate - User's expiration date for their credit card
-   * @param: csv - User's CSV for their credit card
-   * @return: None
+   * Updates the credit card information of the user when they put that information in
+   *
+   * @param: creditcardnumber
+   *                 User's credit card number
+   * @param: expdate
+   *                User's expiration date for their credit card
+   * @param: csv
+   *                User's CSV for their credit card
   */
   public void UpdateCreditCard( int creditcardnumber, int expdate, int csv) {
     this.CreditCardNumber = creditcardnumber;
@@ -123,11 +136,15 @@ public class User {
   }
 
   /**
-   * When user gives own info update accordingly
-   * @param: firstname - User's first name
-   * @param: lastname - User's last name
-   * @param: phonenumber - User's phone number
-   * @return: None
+   * Updates users information (first name, last name, phone number) when they put
+   * that information in
+   *
+   * @param: firstname
+   *              User's first name
+   * @param: lastname
+   *              User's last name
+   * @param: phonenumber
+   *              User's phone number
   */
   public void UpdateInfo(String firstname, String lastname, int phonenumber) {
     this.FirstName = firstname;

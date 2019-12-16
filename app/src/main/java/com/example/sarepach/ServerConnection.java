@@ -31,8 +31,11 @@ import java.net.URL;
 import static org.apache.http.params.CoreConnectionPNames.CONNECTION_TIMEOUT;
 
 /**
- * Class will represent a link to the studentvhost server
-*/
+ * This is a ServerConnection class that will represent a link to the studentvhost server
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
 public class ServerConnection {
 
     /**
@@ -54,8 +57,9 @@ public class ServerConnection {
     protected final int Port = 80;
 
     /**
-     * Method will get the current ip address of the base name server
-     * @return ip - InetAddress object with which we can establish a connection
+     * Gets the current ip address of the base name server
+     *
+     * @return ip, InetAddress object with which we can establish a connection
      */
     public InetAddress GetIPHost() {
         InetAddress ip = null;
@@ -69,7 +73,8 @@ public class ServerConnection {
     }
 
     /**
-     * Method will establish a connection with a InetAddress object passed to it
+     * Establishes a connection with a InetAddress object passed to it
+     *
      * @return 1 on success, 0 otherwise
      */
     public Socket EstablishConnection() {
@@ -91,9 +96,12 @@ public class ServerConnection {
     }
 
     /**
-     * Method allows us to send specific messages to connected server
-     * @param message - message to be semt to client
-     * @param sock - established sock connection with client
+     * Allows us to send specific messages to connected server
+     *
+     * @param message
+     *              message to be sent to client
+     * @param sock
+     *              established sock connection with client
      */
     public void SendMessage(String message, Socket sock) {
         try {
@@ -120,8 +128,5 @@ public class ServerConnection {
 //        //Make call to AsyncRetrieve
 //        new AsyncRetrieve().execute();
  //   }
-
-
-
 }
 
