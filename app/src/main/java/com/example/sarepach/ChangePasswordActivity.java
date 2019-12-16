@@ -165,7 +165,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         /**
          * This will interact with UI and display loading message
-         *
          */
         @Override
         protected void onPreExecute() {
