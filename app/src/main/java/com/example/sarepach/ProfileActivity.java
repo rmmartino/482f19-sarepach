@@ -165,7 +165,7 @@ public class ProfileActivity extends AppCompatActivity {
             // Add text view to the new row
             addTextView(tableRow, item);
             addButton(tableRow, item);
-            addImage(tableRow, item);
+            //addImage(tableRow, item);
 
         }catch (Exception e) {
             Log.w("ProfileActivityTableRow", e);
@@ -194,7 +194,6 @@ public class ProfileActivity extends AppCompatActivity {
         textView.setPadding(0, 10, 0, 0);
         textView.setText(item.split(";")[0]);
         v.addView(textView);
-<<<<<<< HEAD
 
     }
 
@@ -207,9 +206,6 @@ public class ProfileActivity extends AppCompatActivity {
         button.setBackgroundColor(Color.parseColor("#7EBAD1"));
         button.setText(item.split(";")[3]);
         v.addView(button);
-
-=======
->>>>>>> ec2f321f4e15bee63e5716d943c00bb41ec4bb6e
     }
 
     /**
