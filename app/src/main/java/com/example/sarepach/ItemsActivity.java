@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -126,14 +127,16 @@ public class ItemsActivity extends AppCompatActivity {
             // Add table row entry to the table layout
             TableRow tableRow = new TableRow(getApplicationContext());
             tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, 200));
-            tableRow.setBackgroundColor(Color.parseColor("#7EBAD1"));
+
+            tableRow.setBackgroundColor(Color.parseColor("#DDDDDD"));
 
             //tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
             v.addView(tableRow);
             // Add text view to the new row
-            //addTextView(tableRow, item);
+
             addImageView(tableRow, item);
             addButton(tableRow, item);
+            addTextView(tableRow, item);
 
 
         }catch (Exception e) {
@@ -157,13 +160,18 @@ public class ItemsActivity extends AppCompatActivity {
         TextView textView = new TextView(getApplicationContext());
         //textView.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
         //textView.setLayoutParams(layoutParams);
-        textView.setTextSize(24f);
+        textView.setTextSize(18f);
         textView.setTextColor(Color.BLACK);
-        textView.setBackgroundColor(Color.parseColor("#7EBAD1"));
+        textView.setBackgroundColor(Color.parseColor("#DDDDDD"));
+        //textView.c();
 
-        textView.setText(item.split(";")[0]);
-        textView.setHeight(300);
-        textView.setWidth(700);
+        String next_bid = "Next bid: \n$";
+        textView.setText(next_bid + item.split(";")[2]);
+        textView.setHeight(200);
+        textView.setWidth(220);
+        textView.setGravity(Gravity.CENTER_HORIZONTAL);
+
+
         v.addView(textView);
 
     }
@@ -194,9 +202,12 @@ public class ItemsActivity extends AppCompatActivity {
         button.setTextSize(24f);
         button.setTextColor(Color.BLACK);
         button.setBackgroundColor(Color.parseColor("#DDDDDD"));
+        
         button.setText(item.split(";")[0]);
+        button.setAllCaps(false);
         button.setHeight(200);
         button.setWidth(1000);
+        button.setGravity(Gravity.LEFT);
 
         v.addView(button);
     }
