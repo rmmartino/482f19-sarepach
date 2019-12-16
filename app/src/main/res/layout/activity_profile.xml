@@ -72,6 +72,7 @@
         android:layout_below="@+id/myBidsLabel"
         >
         <TableLayout
+            android:id="@+id/tableLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="10dp"
@@ -80,138 +81,9 @@
             android:divider="@color/darkGrey"
             android:shrinkColumns="1"
             >
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/item2Image"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:src="@drawable/artlogo"
-                    />
-
-                <TextView
-                    android:text="Artwork by James Smith \n YOU GOT OUTBID"
-                    android:textSize="24dp"
-                    />
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="fill_parent"
-                    android:layout_column="1"
-                    android:onClick="goDescription"
-                    android:text="BID AGAIN! \n You want it!"
-                    android:textAllCaps="false"
-                    />
 
 
-            </TableRow>
 
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/item1Image"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:src="@drawable/furnlogo"
-                    />
-
-                <TextView
-                    android:layout_width="169dp"
-                    android:layout_height="fill_parent"
-                    android:text="Oak Chair\n I Bid: $50"
-                    android:textSize="24dp"
-                    />
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="fill_parent"
-                    android:layout_column="1"
-                    android:text="Highest Bid."
-                    android:textAllCaps="false"
-                    />
-
-
-            </TableRow>
-
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/item7Image"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:src="@drawable/furnlogo"
-                    />
-
-                <TextView
-                    android:layout_width="169dp"
-                    android:layout_height="fill_parent"
-                    android:text="Oak Chair\n I Bid: $50"
-                    android:textSize="24dp"
-                    />
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="fill_parent"
-                    android:layout_column="1"
-                    android:text="Highest Bid."
-                    android:textAllCaps="false"
-                    />
-
-
-            </TableRow>
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/item4Image"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:src="@drawable/furnlogo"
-                    />
-
-                <TextView
-                    android:layout_width="169dp"
-                    android:layout_height="fill_parent"
-                    android:text="Oak Chair\n I Bid: $50"
-                    android:textSize="24dp"
-                    />
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="fill_parent"
-                    android:layout_column="1"
-                    android:text="Highest Bid."
-                    android:textAllCaps="false"
-                    />
-
-
-            </TableRow>
-
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/item5Image"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:src="@drawable/furnlogo"
-                    />
-
-                <TextView
-                    android:layout_width="169dp"
-                    android:layout_height="fill_parent"
-                    android:text="Oak Chair\n I Bid: $50"
-                    android:textSize="24dp"
-                    />
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="fill_parent"
-                    android:layout_column="1"
-                    android:text="Highest Bid."
-                    android:textAllCaps="false"
-                    />
-
-
-            </TableRow>
 
 
 
