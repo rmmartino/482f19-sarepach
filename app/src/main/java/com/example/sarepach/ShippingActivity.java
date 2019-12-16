@@ -187,7 +187,7 @@ public class ShippingActivity extends AppCompatActivity {
             try {
                 //url = new URL(addUser + this.username );
                 url = new URL(addShipping + this.houseIn  + this.streetIn + this.cityIn + this.stateIn + this.zipIn + this.nameIn + "&email=" + MainActivity.currentUser.Email );
-                Log.w("shipping Acitivity", url.toString());
+                Log.w("Shipping Activity", url.toString());
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
