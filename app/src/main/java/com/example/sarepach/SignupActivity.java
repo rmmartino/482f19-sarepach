@@ -142,7 +142,6 @@ public class SignupActivity extends AppCompatActivity {
         HttpURLConnection conn;
         URL url = null;
         private final String addUser = "http://sarepach.cs.loyola.edu/UserConnection/addUser.php";
-        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
