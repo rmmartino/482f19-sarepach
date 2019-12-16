@@ -19,8 +19,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * This is a ChangePasswordActivity class that allows the user to change their password
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
 public class ChangePasswordActivity extends AppCompatActivity {
 
+    /**
+     * Creates the screen of the app for where the user changes their password and
+     * displays a dialog box that states whether it worked or not
+     *
+     * @param savedInstanceState
+     *            the previous state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,26 +83,57 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Opens the app on the start
+     */
     public void onStart() {
         super.onStart();
     }
 
+    /**
+     * Sets up the screen that allows the user to change their password on their
+     * profile page
+     *
+     * @param v
+     *            the screen view
+     */
     public void goProfile(View v) {
         Intent intent = new Intent(this, ProfileActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * Sets up the screen that goes to the description of an item page
+     *
+     * @param v
+     *            the screen view
+     */
     public void goDescription(View v) {
         Intent intent = new Intent(this, DescriptionActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * Sets up the screen that goes to the settings page
+     *
+     * @param v
+     *            the screen view
+     */
     public void goSettings(View v) {
         Intent intent = new Intent(this, SettingsActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * This is a AsyncRetrieve class that uses the Android Studio library,
+     * AsyncTask which allows for the communication between the server and the app.
+     * This connects with the changePassword php file in the server which checks if the old
+     * password of the user is the correct combination with their email in the database table
+     * and then updates their password to their newly entered password
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class AsyncRetrieve extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String oldPassIn;
@@ -98,10 +142,19 @@ public class ChangePasswordActivity extends AppCompatActivity {
         HttpURLConnection conn;
         URL url = null;
         private final String changePass = "http://sarepach.cs.loyola.edu/UserConnection/changePassword.php";
-        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
+        /**
+         * Retrieves the username and password of the user
+         *
+         * @param old
+         *            the old password of the user
+         * @param newpass
+         *            the new password of the user
+         * @param conf
+         *            value needed for Async method
+         */
         public AsyncRetrieve(String old, String newpass, String conf){
             this.oldPassIn = "?oldPassword=" + old;
             this.newPassIn = "&newPassword="+  newpass;
@@ -110,7 +163,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
             Log.w("change pass", this.changePass);
         }
 
-        //this method will interact with UI, here display loading message
+        /**
+         * This will interact with UI and display loading message
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -121,12 +176,22 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * This connects with the changePassword php file on the server to check
+         * that the email and old password of the user is a correct combination in the
+         * database table and then changes the password to the newly entered password
+         *
+         * @param params
+         *
+         * @return the output from the php file if it connects successfully, "unsuccessful" if
+         * it doesn't connect successfully
+         */
         @Override
         public String doInBackground(String... params) {
             try {
                 //url = new URL(addUser + this.username );
                 url = new URL(changePass + this.oldPassIn  + this.newPassIn + "&email=" + MainActivity.currentUser.Email );
-                Log.w("shipping Acitivity", url.toString());
+                Log.w("Shipping Activity", url.toString());
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
