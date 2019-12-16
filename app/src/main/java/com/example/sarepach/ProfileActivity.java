@@ -191,8 +191,10 @@ public class ProfileActivity extends AppCompatActivity {
         textView.setTextSize(24f);
         textView.setTextColor(Color.BLACK);
         textView.setBackgroundColor(Color.parseColor("#7EBAD1"));
-        textView.setPadding(0, 10, 0, 0);
+
         textView.setText(item.split(";")[0]);
+        textView.setHeight(300);
+        textView.setWidth(700);
         v.addView(textView);
 
     }
@@ -205,6 +207,7 @@ public class ProfileActivity extends AppCompatActivity {
         button.setTextColor(Color.BLACK);
         button.setBackgroundColor(Color.parseColor("#7EBAD1"));
         button.setText(item.split(";")[3]);
+
         v.addView(button);
     }
 
