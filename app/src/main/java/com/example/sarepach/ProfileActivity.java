@@ -132,8 +132,11 @@ public class ProfileActivity extends AppCompatActivity {
      */
     // will eventually parse through all items
     public void addItemEntitys(TableLayout v, String item){
-        // First add a table row to the table layout
-        addTableRow(v, item);
+        String[] items_to_display = item.split("_");
+        for(int i = 0; i < items_to_display.length; i++){
+            addTableRow(v, items_to_display[i]);
+        }
+
 
     }
 
