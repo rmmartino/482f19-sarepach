@@ -9,4 +9,3 @@ This is the repository for team sarepach to develop their Auction application in
 
 # Team Lead: 
 Sarah Flaherty
-# Team Members:
