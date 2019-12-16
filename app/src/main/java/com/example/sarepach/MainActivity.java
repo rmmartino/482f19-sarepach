@@ -35,7 +35,6 @@ import static java.lang.String.valueOf;
  * @author SaRePaCh
  * @version 1.0 12/15/2019
  */
-
 public class MainActivity extends AppCompatActivity {
 
     protected static User currentUser = null;
