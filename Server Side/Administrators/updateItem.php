@@ -36,44 +36,41 @@ $result = $conn->query($sqlSelect);
 if($result->num_rows > 0) {
      while($row = $result->fetch_assoc()) {
         echo "ID: " . $row["id"] . "<br>". "Starting Price: " . $row["startingPrice"] . "<br>". "Increment:  " . $row["increment"] . "<br>". "Description: " . $row["description"] . "<br>". "Category: " . $row["category"] . "<br>". "Name: " . $row["name"]. "<br>";
-    }
+    } ?>
+    <body>
+
+        <!-- Check to see what field the admin wants to update -->
+        <h2> Which field do you want to update?</h2>
+
+        <p>Select a minimum of 1 choice</p>
+
+        <!-- Provide a list of fields for the admin to update so that they can select which ones they want to update -->
+        <form action="" method="post">
+        <input type="checkbox" name="startingPrice" value="startingPrice" id="startingPrice"/>
+        <label for="startingPrice">Starting Price</label><br>
+
+        <input type="checkbox" name="increment" value="increment" id="increment"/>
+        <label for="increment">Increment</label><br>
+
+        <input type="checkbox" name="description" value="description" id="description"/>
+        <label for="description">Description</label><br>
+
+        <input type="checkbox" name="category" value="category" id="category"/>
+        <label for="category">Category</label><br>
+
+        <input type="checkbox" name="name" value="name" id="name"/>
+        <label for="name">Name</label><br>
+
+        <input type="submit" name="submitOptions" value="Continue" />
+        </form>
+    </body>
+<?php
 } else {
     echo "0 results";
 }
 
 $conn->close();
 
-?>
-
-<body>
-
-<!-- Check to see what field the admin wants to update -->
-<h2> Which field do you want to update?</h2>
-
-<p>Select a minimum of 1 choice</p>
-
-<!-- Provide a list of fields for the admin to update so that they can select which ones they want to update -->
-<form action="" method="post">
-  <input type="checkbox" name="startingPrice" value="startingPrice" id="startingPrice"/>
-  <label for="startingPrice">Starting Price</label><br>
-
-  <input type="checkbox" name="increment" value="increment" id="increment"/>
-  <label for="increment">Increment</label><br>
-
-  <input type="checkbox" name="description" value="description" id="description"/>
-  <label for="description">Description</label><br>
-
-  <input type="checkbox" name="category" value="category" id="category"/>
-  <label for="category">Category</label><br>
-
-  <input type="checkbox" name="name" value="name" id="name"/>
-  <label for="name">Name</label><br>
-
-  <input type="submit" name="submitOptions" value="Continue" />
-</form>
-</body>
-
-<?php
 // Retrieve the values that the user inputted for each field
 $startingPrice = $_POST['startingPrice'];
 $increment = $_POST['increment'];
@@ -81,6 +78,24 @@ $description = $_POST['description'];
 $category = $_POST['category'];
 $name = $_POST['name'];
 ?>
+
+<form action="updateItem2.php" method="get" enctype="multipart/form-data">
+
+<?php
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+
+// Retrieve the values that the user inputted for each field
+$startingPrice = $_POST['startingPrice'];
+$increment = $_POST['increment'];
+$description = $_POST['description'];
+$category = $_POST['category'];
+$name = $_POST['name'];
+?>
+
 <form action="updateItem2.php" method="get" enctype="multipart/form-data">
 
 <?php
