@@ -52,10 +52,6 @@ public class ItemsActivity extends AppCompatActivity {
             allItems = asyncRetrieveBids.execute().get();
             TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
             addItemEntitys(tableLayout, allItems);
-            AlertDialog alertDialog = new AlertDialog.Builder(ItemsActivity.this).create();
-            alertDialog.setTitle("Incorrect username/password");
-            alertDialog.setMessage(allItems);
-            alertDialog.show();
         } catch(Exception e){
             Log.w("ItemsActivity", "Error loading all items: " +  e);
         }

@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import java.text.*;
+import java.util.*;
 
 // Separate additions for AsyncTask connection to server
 import android.app.ProgressDialog;
@@ -69,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
                      */
                     public void onClick(View view)
                     {
+                        Date todayDate = new Date();
+
+                        AlertDialog alertDialogTime = new AlertDialog.Builder(MainActivity.this).create();
+                        alertDialogTime.setTitle("Current Time is " + todayDate.getTime());
+                        alertDialogTime.show();
+
                         AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
                         try {
                             String result = asyncTask.execute().get();
