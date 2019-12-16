@@ -19,8 +19,22 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * This is a ShippingActivity class that corresponds with the screen of the app that
+ * allows the user to enter their shipping information (their address) when they bid on an item
+ *
+ * @author SaRePaCh
+ * @version 1.0 12/15/2019
+ */
 public class ShippingActivity extends AppCompatActivity {
 
+    /**
+     * Creates the screen of the app that allows the user to put in their
+     * shipping information
+     *
+     * @param savedInstanceState
+     *            the previous state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,22 +79,45 @@ public class ShippingActivity extends AppCompatActivity {
                 });
     }
 
-
+    /**
+     * Opens the app on the start
+     */
     public void onStart() {
         super.onStart();
     }
 
-
+    /**
+     * Sets up the screen that displays all of the items available to bid on
+     *
+     * @param v
+     *            the screen view
+     */
     public void returnToItems(View v) {
         Intent intent = new Intent(this, ItemsActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * Sets up the screen after the user clicks the 'submit' button after inputting
+     * their shipping information which brings them back to their profile page
+     *
+     * @param v
+     *            the screen view
+     */
     public void submit(View v) {
         Intent intent = new Intent(this, ProfileActivity.class);
         this.startActivity(intent);
     }
 
+    /**
+     * This is a AsyncRetrieve class that uses the Android Studio library,
+     * AsyncTask which allows for the communication between the server and the app.
+     * This connects with the addShipping php file in the server which adds the shipping
+     * information into the database table with the corresponding user.
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class AsyncRetrieve extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String houseIn;
@@ -93,10 +130,25 @@ public class ShippingActivity extends AppCompatActivity {
         HttpURLConnection conn;
         URL url = null;
         private final String addShipping = "http://sarepach.cs.loyola.edu/UserConnection/addShipping.php";
-        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
+        /**
+         * Retrieves the username and password of the user
+         *
+         * @param house
+         *            the house number for where the item will be shipped to
+         * @param street
+         *            the street name for where the item will be shipped to
+         * @param city
+         *            the city for where the item will be shipped to
+         * @param state
+         *            the state for where the item will be shipped to
+         * @param zipcode
+         *            the zipcode for where the item will be shipped to
+         * @param name
+         *            the name of the person for where the item will be shipped to
+         */
         public AsyncRetrieve(String house, String street, String city, String state, String zipcode, String name){
             this.houseIn = "?houseInput=" + house;
             this.streetIn = "&streetInput="+  street;
@@ -109,7 +161,9 @@ public class ShippingActivity extends AppCompatActivity {
             Log.w("signupActivity", this.addShipping);
         }
 
-        //this method will interact with UI, here display loading message
+        /**
+         * This will interact with UI and display loading message
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -117,9 +171,17 @@ public class ShippingActivity extends AppCompatActivity {
             //pdLoading.setMessage("\tLoading...");
             //pdLoading.setCancelable(false);
             //pdLoading.show();
-
         }
 
+        /**
+         * This connects with the addShipping php file on the server to add the shipping
+         * information to the database table in the row with the corresponding user.
+         *
+         * @param params
+         *
+         * @return the output from the php file if it connects successfully, "unsuccessful" if
+         * it doesn't connect successfully
+         */
         @Override
         public String doInBackground(String... params) {
             try {
