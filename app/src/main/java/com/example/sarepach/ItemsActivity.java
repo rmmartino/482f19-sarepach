@@ -215,7 +215,7 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
      * @param v
      *            the screen view
      * @param item
-     *            the item being added
+     *            the item the user wants to view/bid on
      */
     public void addButton(TableRow v, String item){
         Button button = new Button(this);

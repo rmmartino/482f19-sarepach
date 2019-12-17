@@ -1,29 +1,19 @@
 package com.example.sarepach;
 
-import androidx.annotation.MainThread;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Button;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.widget.LinearLayout;
 
 import com.squareup.picasso.Picasso;
 
@@ -62,19 +52,12 @@ public class ProfileActivity extends AppCompatActivity {
         try {
             AsyncRetrieveProfileBids asyncTask = new AsyncRetrieveProfileBids();
             result = asyncTask.execute().get();
-            //AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
-            //alertDialog.setTitle("Display Result");
-            //alertDialog.setMessage(result);
-            //alertDialog.show();
             TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
-            //tableLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
             addItemEntitys(tableLayout, result);
-
         }
         catch(Exception e){
             Log.w("ProfileActivityCreate", e);
         }
-
     }
 
     /**
@@ -141,14 +124,11 @@ public class ProfileActivity extends AppCompatActivity {
      * @param item
      *            the item being added
      */
-    // will eventually parse through all items
     public void addItemEntitys(TableLayout v, String item){
         String[] items_to_display = item.split("_");
         for(int i = 0; i < items_to_display.length; i++){
             addTableRow(v, items_to_display[i]);
         }
-
-
     }
 
     /**
@@ -173,15 +153,9 @@ public class ProfileActivity extends AppCompatActivity {
             addImageView(tableRow, item);
             addTextView(tableRow, item);
             addButton(tableRow, item);
-
-
         }catch (Exception e) {
             Log.w("ProfileActivityTableRow", e);
         }
-        //addButton();
-        //ImageView imageView = new ImageView(getApplicationContext());
-        //TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
-        //imageView.setLayoutParams(layoutParams);
     }
 
     /**
@@ -200,9 +174,7 @@ public class ProfileActivity extends AppCompatActivity {
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
         v.addView(imageView, 200 ,200);
-
     }
-
 
     /**
      * Adds a text view to allow more items to be displayed
@@ -214,8 +186,6 @@ public class ProfileActivity extends AppCompatActivity {
      */
     public void addTextView(TableRow v, String item){
         TextView textView = new TextView(getApplicationContext());
-        //textView.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
-        //textView.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
 
         textView.setTextSize(24f);
         textView.setTextColor(Color.BLACK);
@@ -228,10 +198,16 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Adds a button to view the item that was bidded on
+     *
+     * @param v
+     *            the screen view
+     * @param item
+     *            the item the user wants to view
+     */
     public void addButton(TableRow v, String item){
         Button button = new Button(this);
-        //button.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
-        //button.setLayoutParams(layoutParams);
         button.setTextSize(16f);
         button.setTextColor(Color.BLACK);
         button.setBackgroundColor(Color.parseColor("#DDDDDD"));
@@ -239,7 +215,6 @@ public class ProfileActivity extends AppCompatActivity {
         button.setWidth(250);
         ItemListener itemListener = new ItemListener(item.split(";")[0]);
         button.setOnClickListener(itemListener);
-
 
         String isTopBidder = (item.split(";")[3]).trim();
         if (isTopBidder.equals("true")){
@@ -252,21 +227,41 @@ public class ProfileActivity extends AppCompatActivity {
         v.addView(button);
     }
 
+    /**
+     * This is a ItemListener class that puts a button on the name of each item
+     * in the bid list under the users profile then brings them to the information regarding
+     * the selected item.
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class ItemListener implements View.OnClickListener
     {
 
         String itemName;
+
+        /**
+         * Retrieves the name of the item selected
+         *
+         * @param itemName
+         *            the name of the item clicked on
+         */
         public ItemListener(String itemName) {
             this.itemName = itemName;
         }
 
+        /**
+         * Goes to the description page when the button (name of item) gets clicked
+         *
+         * @param v
+         *          the screen view
+         */
         @Override
         public void onClick(View v)
         {
             //read your lovely variable
             goDescription(v, this.itemName);
         }
-
     }
 
     /**
@@ -301,10 +296,6 @@ public class ProfileActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //pdLoading.setMessage("\tLoading...");
-            //pdLoading.setCancelable(false);
-            //pdLoading.show();
         }
 
         /**
@@ -328,8 +319,8 @@ public class ProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
                 return e.toString();
             }
-            try {
 
+            try {
                 // Setup HttpURLConnection class to send and receive data from php
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
@@ -366,9 +357,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     // Pass data to onPostExecute method
                     return (result.toString());
-
                 }
-
 
                 else {
 
@@ -381,20 +370,7 @@ public class ProfileActivity extends AppCompatActivity {
             } finally {
                 conn.disconnect();
             }
-
-
         }
-/**
- @Override
- public void onPostExecute(String result){
- AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
- alertDialog.setTitle("Display Result");
- alertDialog.setMessage(result);
- alertDialog.show();
- }
- */
-
-
     }
 }
 
