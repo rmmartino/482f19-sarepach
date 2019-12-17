@@ -10,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,10 +55,6 @@ public class DescriptionActivity extends AppCompatActivity {
         AsyncNewBid asyncNewBid = new AsyncNewBid(itemName);
         try {
             String itemInfo = asyncNewBid.execute().get();
-            AlertDialog alertDialogTime = new AlertDialog.Builder(DescriptionActivity.this).create();
-            alertDialogTime.setTitle("Auction is Closed");
-            alertDialogTime.setMessage(itemInfo);
-            alertDialogTime.show();
             displayItemInfo(itemInfo);
         }catch(Exception e){
             Log.w("DescriptionActivity", "Could not retreive item info: " + e);
@@ -125,6 +124,18 @@ public class DescriptionActivity extends AppCompatActivity {
         String itemName = itemInfo.split(";")[0];
         TextView textView = (TextView) findViewById(R.id.itemID);
         textView.setText(itemName);
+
+        ImageView imageView = (ImageView) findViewById(R.id.imageID);
+        Picasso.get().load(itemInfo.split(";")[1]).into(imageView);
+
+        textView = (TextView) findViewById(R.id.itemdescriptionID);
+        textView.setText(itemInfo.split(";")[2]);
+
+        String bidInfo = "Current Bid: $" + itemInfo.split(";")[3] + "\n Your Min Bid: $" + itemInfo.split(";")[4].replace("_", "");
+        textView = (TextView) findViewById(R.id.bidInfoID);
+        textView.setText(bidInfo);
+
+
 
     }
 

@@ -32,7 +32,6 @@
         android:layout_below="@+id/itemID"
         android:layout_height="170dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/artlogo"
         />
     <TextView
         android:id="@+id/itemdescriptionID"
@@ -41,7 +40,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="22sp"
-        android:text="Painted By: James Smith 1872"
         />
 
     <TextView
@@ -51,7 +49,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="22sp"
-        android:text="Current Bid: $125 \n Your Min Bid: $130"
+
         />
 
     <TextView
