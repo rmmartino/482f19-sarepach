@@ -21,6 +21,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -208,12 +210,11 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
     public void addImageView(TableRow v, String item){
         ImageView imageView = new ImageView(getApplicationContext());
 
-        imageView.setImageResource(R.drawable.bsoshort);
+        Picasso.get().load(item.split(";")[1]).into(imageView);
 
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
         v.addView(imageView, 200 ,200);
-
     }
 
     public void addButton(TableRow v, String item){
