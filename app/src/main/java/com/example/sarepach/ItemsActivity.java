@@ -62,10 +62,12 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         categories.add("Trending");
         categories.add("Price: Low to High");
         categories.add("Price: High to Low");
-        categories.add("Entertainment");
-        categories.add("Art");
-        categories.add("Sports");
-        categories.add("Health");
+        categories.add("Home & Kitchen");
+        categories.add("Clothing & Accessories");
+        categories.add("Food & Drink");
+        categories.add("Technology");
+        categories.add("Travel & Vehicles");
+        categories.add("Sports & Entertainment");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -240,8 +242,11 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String item = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        String filterChoice = adapterView.getItemAtPosition(i).toString();
+        //Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        if(filterChoice.equals("Trending")) {
+            Toast.makeText(adapterView.getContext(), "HI", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
