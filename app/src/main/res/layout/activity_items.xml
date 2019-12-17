@@ -60,6 +60,7 @@
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         android:prompt="@string/spinner_title"
+        android:entries="@array/Filter"
         />
 
     <Button
