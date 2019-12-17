@@ -29,7 +29,7 @@ $sql = "UPDATE user SET creditCard = '$creditCardEncrypt', nameOnCard = '$name',
 
 // Check to see if the credit card information was added
 if ($conn->query($sql) == TRUE) {
-    echo "Successful"
+    echo "Successful";
 } else { 
     echo "Error with Information";
 }
