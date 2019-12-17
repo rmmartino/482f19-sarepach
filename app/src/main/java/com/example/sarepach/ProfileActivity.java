@@ -195,7 +195,6 @@ public class ProfileActivity extends AppCompatActivity {
         textView.setHeight(200);
         textView.setWidth(700);
         v.addView(textView);
-
     }
 
     /**

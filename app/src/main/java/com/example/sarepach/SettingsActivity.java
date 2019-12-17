@@ -58,4 +58,14 @@ public class SettingsActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    /**
+     * Sets up the login screen that the user goes to after choosing to logout
+     *
+     * @param v
+     *            the screen view
+     */
+    public void goLogin(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        this.startActivity(intent);
+    }
 }
