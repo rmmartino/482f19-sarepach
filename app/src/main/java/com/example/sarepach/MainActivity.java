@@ -71,16 +71,39 @@ public class MainActivity extends AppCompatActivity {
                      */
                     public void onClick(View view)
                     {
-                        Date todayDate = new Date();
+                        //Date todayDate = new Date();
 
-                        AlertDialog alertDialogTime = new AlertDialog.Builder(MainActivity.this).create();
-                        alertDialogTime.setTitle("Current Time is " + todayDate.getTime());
-                        alertDialogTime.show();
 
                         AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
                         try {
+
                             String result = asyncTask.execute().get();
-                            if(result.equals("Success")) {
+
+                            String currentTime = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+
+                            Date today = new Date();
+                            Date expired = new Date();
+
+
+                            SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
+                            try {
+                                today = sdformat.parse(currentTime);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+                                expired = sdformat.parse("01-01-2020");
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                            if(today.compareTo(expired) > 0) {
+                                AlertDialog alertDialogTime = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialogTime.setTitle("Auction is Closed");
+                                alertDialogTime.setMessage("Check your email to see if you were a winner!");
+                                alertDialogTime.show();
+                            }
+                            else if(result.equals("Success")) {
                                 currentUser = new User(usernameText.getText().toString());
                                 goProfile(null);
                             }
@@ -116,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProfileActivity.class);
         this.startActivity(intent);
     }
+
 
     /**
      * Sets up the screen that follows after the user clicks the signup button
