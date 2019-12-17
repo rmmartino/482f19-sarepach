@@ -36,25 +36,6 @@
         />
 
 
-    <TextView
-        android:id="@+id/emailLabel"
-        style="@style/TextStyle"
-        android:layout_below="@+id/profilePic"
-        android:layout_marginTop="23dp"
-        android:text="Your email: "
-        android:textSize="28sp"
-        android:layout_alignLeft="@id/returnToItems"/>
-
-    <TextView
-        android:id="@+id/email"
-        style="@style/TextStyle"
-        android:layout_below="@+id/profilePic"
-        android:layout_marginTop="26dp"
-        android:layout_toRightOf="@id/emailLabel"
-        android:text="exampleEmail@test.com"
-        android:textSize="15dp" />
-
-
     <Button
         android:id="@+id/changePassword"
         style="@style/TextStyle"
@@ -62,8 +43,19 @@
         android:layout_marginTop="20dp"
         android:textSize="28sp"
         android:text="Change Password"
-        android:layout_below="@+id/email"
+        android:layout_below="@+id/profilePic"
         android:onClick="goChange"
+        />
+
+    <Button
+        android:id="@+id/logout"
+        style="@style/TextStyle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:text="Logout"
+        android:layout_below="@+id/changePassword"
+        android:onClick="goLogin"
         />
 
 </RelativeLayout>
