@@ -3,27 +3,24 @@ package com.example.sarepach;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import java.text.*;
 import java.util.*;
 
 // Separate additions for AsyncTask connection to server
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.os.Bundle;
-//import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -71,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
                      */
                     public void onClick(View view)
                     {
-                        //Date todayDate = new Date();
-
-
                         AsyncValidateUserInfo asyncTask = new AsyncValidateUserInfo(usernameText.getText().toString(), passwordText.getText().toString());
                         try {
 
@@ -83,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
                             Date today = new Date();
                             Date expired = new Date();
-
 
                             SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
                             try {
@@ -103,20 +96,21 @@ public class MainActivity extends AppCompatActivity {
                                 alertDialogTime.setMessage("Check your email to see if you were a winner!");
                                 alertDialogTime.show();
                             }
+
                             else if(result.equals("Success")) {
                                 currentUser = new User(usernameText.getText().toString());
                                 goProfile(null);
                             }
+
                             else {
                                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                                 alertDialog.setTitle("Incorrect username/password");
                                 alertDialog.show();
                             }
+
                         } catch(Exception e){
                             Log.w("MainActivity", e);
-
                     }
-
                     }
                 });
     }
@@ -140,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-
     /**
      * Sets up the screen that follows after the user clicks the signup button
      * on the first screen
@@ -163,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
      * @version 1.0 12/15/2019
      */
     protected class AsyncValidateUserInfo extends AsyncTask<String, String, String> {
-        //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String username;
         String password;
         HttpURLConnection conn;
@@ -191,11 +183,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //pdLoading.setMessage("\tLoading...");
-            //pdLoading.setCancelable(false);
-            //pdLoading.show();
-
         }
 
         /**
@@ -215,12 +202,11 @@ public class MainActivity extends AppCompatActivity {
                 url = new URL(validateUserPHP + this.username + this.password );
 
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 return e.toString();
             }
-            try {
 
+            try {
                 // Setup HttpURLConnection class to send and receive data from php
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
@@ -232,7 +218,6 @@ public class MainActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
@@ -257,12 +242,9 @@ public class MainActivity extends AppCompatActivity {
 
                     // Pass data to onPostExecute method
                     return (result.toString());
-
                 }
 
-
-                    else {
-
+                else {
                     return ("unsuccessful");
                 }
 
@@ -272,19 +254,6 @@ public class MainActivity extends AppCompatActivity {
             } finally {
                 conn.disconnect();
             }
-
-
         }
-/**
-        @Override
-        public void onPostExecute(String result){
-            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-            alertDialog.setTitle("Display Result");
-            alertDialog.setMessage(result);
-            alertDialog.show();
-        }
-*/
-
-
     }
 }
