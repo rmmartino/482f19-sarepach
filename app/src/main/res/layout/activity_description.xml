@@ -28,9 +28,9 @@
 
     <ImageView
         android:id="@+id/imageID"
-        android:layout_width="170dp"
+        android:layout_width="140dp"
         android:layout_below="@+id/itemID"
-        android:layout_height="170dp"
+        android:layout_height="140dp"
         android:layout_centerHorizontal="true"
         />
     <TextView
@@ -38,7 +38,7 @@
         style="@style/TextStyle"
         android:layout_below="@id/imageID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="22sp"
         />
 
@@ -47,7 +47,7 @@
         style="@style/LabelStyle"
         android:layout_below="@id/itemdescriptionID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="22sp"
 
         />
@@ -59,7 +59,7 @@
         android:layout_below="@id/bidInfoID"
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="#DDDDDD"
         android:text="Your Bid:"
         android:textSize="22sp" />
@@ -70,7 +70,7 @@
         android:layout_width="100dp"
         android:layout_below="@id/bidInfoID"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/bidInfo2ID"
         android:hint="$"
         android:textSize="22sp" />
@@ -83,7 +83,7 @@
         android:layout_toRightOf="@id/bidAmountInput"
         android:background="@android:color/holo_green_dark"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:text="BID!"
         android:textSize="26dp"
