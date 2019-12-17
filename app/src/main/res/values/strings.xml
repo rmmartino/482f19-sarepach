@@ -9,14 +9,4 @@
     <string name="payment_label">PAYMENT INFO</string>
     <string name="spinner_title">Filters</string>
 
-    <string-array name="Filter">
-            <item>Trending</item>
-            <item>Price: Low to High</item>
-            <item>Price: High to Low</item>
-            <item>Entertainment</item>
-            <item>Art</item>
-            <item>Sports</item>
-            <item>Health</item>
-    </string-array>
-
 </resources>
