@@ -177,8 +177,8 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         textView.setTextColor(Color.BLACK);
         textView.setBackgroundColor(Color.parseColor("#DDDDDD"));
 
-        String next_bid = "Next bid: \n$";
-        textView.setText(next_bid + item.split(";")[2]);
+        String next_bid = "Next bid: \n$" + item.split(";")[2].replace("_", "");
+        textView.setText(next_bid);
         textView.setHeight(200);
         textView.setWidth(220);
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
