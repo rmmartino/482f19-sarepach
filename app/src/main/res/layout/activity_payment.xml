@@ -34,6 +34,7 @@
         android:layout_below="@id/paymentTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:bac
         android:textSize="28sp"
         android:text="Please Review the Info:\n You Bid:$130 \n Item: Artwork"
         />
@@ -46,7 +47,7 @@
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
-        android:background="@android:color/white"
+        android:background="#DDDDDD"
         android:text="Name on Card:"
         android:textSize="18sp"
         android:layout_width="200dp"/>
@@ -70,7 +71,7 @@
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
-        android:background="@android:color/white"
+        android:background="#DDDDDD"
         android:text="CC Number: "
         android:textSize="18sp"
         android:layout_width="200dp"/>
@@ -95,7 +96,7 @@
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
-        android:background="@android:color/white"
+        android:background="#DDDDDD"
         android:text="Expiration Date: "
         android:textSize="18sp"
         android:layout_width="200dp"/>
@@ -119,7 +120,7 @@
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
-        android:background="@android:color/white"
+        android:background="#DDDDDD"
         android:text="CVV Code: "
         android:textSize="18sp"
         android:layout_width="200dp"/>
