@@ -67,7 +67,7 @@ public class PaymentActivity extends AppCompatActivity {
                             alertDialog.show();
                             goShippingInfo(null);
                         } catch (Exception e) {
-                            Log.w("PaymentAcitivity", e);
+                            Log.w("PaymentActivity", e);
 
                         }
 
@@ -125,7 +125,6 @@ public class PaymentActivity extends AppCompatActivity {
         HttpURLConnection conn;
         URL url = null;
         private final String addPayment = "http://sarepach.cs.loyola.edu/UserConnection/addPayment.php";
-        //private final String validateUserPHP = "http://sarepach.cs.loyola.edu/UserConnection/test.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
