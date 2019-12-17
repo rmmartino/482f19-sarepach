@@ -132,7 +132,6 @@ public class SignupActivity extends AppCompatActivity {
      * @version 1.0 12/15/2019
      */
     protected class AsyncRetrieve extends AsyncTask<String, String, String> {
-        //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String username;
         String password;
 
@@ -174,11 +173,6 @@ public class SignupActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //pdLoading.setMessage("\tLoading...");
-            //pdLoading.setCancelable(false);
-            //pdLoading.show();
-
         }
 
         /**
@@ -193,17 +187,15 @@ public class SignupActivity extends AppCompatActivity {
         @Override
         public String doInBackground(String... params) {
             try {
-                //url = new URL(addUser + this.username );
                 url = new URL(addUser + this.username  + this.password + this.first + this.last );
                 Log.w("signupActivity", url.toString());
 
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 return e.toString();
             }
-            try {
 
+            try {
                 // Setup HttpURLConnection class to send and receive data from php
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
@@ -215,13 +207,11 @@ public class SignupActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
 
             try {
-
                 int response_code = conn.getResponseCode();
 
                 // Check if successful connection made
@@ -250,22 +240,6 @@ public class SignupActivity extends AppCompatActivity {
             } finally {
                 conn.disconnect();
             }
-
-
         }
-/**
- @Override
- public void onPostExecute(String result){
- AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
- alertDialog.setTitle("Display Result");
- alertDialog.setMessage(result);
- alertDialog.show();
- }
- */
-
-
     }
-
-
-
 }
