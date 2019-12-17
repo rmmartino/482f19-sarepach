@@ -60,7 +60,7 @@
         android:layout_alignLeft="@+id/returnToItems"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="20dp"
-        android:background="@android:color/white"
+        android:background="#DDDDDD"
         android:text="Your Bid:"
         android:textSize="22sp" />
 
