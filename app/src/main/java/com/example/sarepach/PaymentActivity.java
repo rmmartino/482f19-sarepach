@@ -67,11 +67,6 @@ public class PaymentActivity extends AppCompatActivity {
 
                         AsyncRetrieve asyncTask = new AsyncRetrieve(creditNumberText.getText().toString().replaceAll("-","") ,expirationDateText.getText().toString().replaceAll("/",""),  CSVText.getText().toString() , nameOnCardText.getText().toString().replaceAll("\\s",""));
                         try {
-                            String result = asyncTask.execute().get();
-                            AlertDialog alertDialog = new AlertDialog.Builder(PaymentActivity.this).create();
-                            alertDialog.setTitle("Display Result");
-                            alertDialog.setMessage(result);
-                            alertDialog.show();
                             goShippingInfo(null);
                         } catch (Exception e) {
                             Log.w("PaymentActivity", e);

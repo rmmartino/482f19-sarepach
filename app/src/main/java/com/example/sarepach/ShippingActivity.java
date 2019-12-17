@@ -64,11 +64,6 @@ public class ShippingActivity extends AppCompatActivity {
                     {
                             AsyncRetrieve asyncTask = new AsyncRetrieve(houseText.getText().toString(), streetText.getText().toString().replaceAll("\\s","") , cityText.getText().toString().replaceAll("\\s","") , stateText.getText().toString() , zipcodeText.getText().toString() , nameShippingText.getText().toString().replaceAll("\\s",""));
                             try {
-                                String result = asyncTask.execute().get();
-                                AlertDialog alertDialog = new AlertDialog.Builder(ShippingActivity.this).create();
-                                alertDialog.setTitle("Display Result");
-                                alertDialog.setMessage(result);
-                                alertDialog.show();
                                 submit(null);
                             } catch (Exception e) {
                                 Log.w("SignUpActivity", e);
