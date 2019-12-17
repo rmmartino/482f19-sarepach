@@ -114,11 +114,13 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
      * @param v
      *            the screen view
      */
-    public void goDescription(View v, int NewBid) {
+    public void goDescription(View v, String itemName) {
         Intent intent = new Intent(this, DescriptionActivity.class);
-        intent.putExtra("ITEM_ID", NewBid);
+        intent.putExtra("ITEM_ID", itemName);
         this.startActivity(intent);
     }
+
+
 
     /**
      * Adds an item to a table to display the items the user as bidded on
@@ -232,6 +234,8 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         button.setHeight(200);
         button.setWidth(1000);
         button.setGravity(Gravity.LEFT);
+        ItemListener itemListener = new ItemListener(item.split(";")[0]);
+        button.setOnClickListener(itemListener);
 
         v.addView(button);
     }
@@ -249,6 +253,25 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    protected class ItemListener implements View.OnClickListener
+    {
+
+        String itemName;
+        public ItemListener(String itemName) {
+            this.itemName = itemName;
+        }
+
+        @Override
+        public void onClick(View v)
+        {
+            //read your lovely variable
+            goDescription(v, this.itemName);
+        }
+
+    }
+
+
 
     /**
      * This is a AsyncRetrieveProfileBids class that uses the Android Studio library,

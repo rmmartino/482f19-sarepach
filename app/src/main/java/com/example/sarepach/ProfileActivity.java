@@ -69,6 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
             TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
             //tableLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
             addItemEntitys(tableLayout, result);
+
         }
         catch(Exception e){
             Log.w("ProfileActivityCreate", e);
@@ -102,7 +103,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
     public void goDescription(View v, String item) {
         Intent intent = new Intent(this, DescriptionActivity.class);
-        //intent.putExtra()
+        intent.putExtra("ITEM_ID", item);
         this.startActivity(intent);
     }
 
@@ -236,23 +237,9 @@ public class ProfileActivity extends AppCompatActivity {
         button.setBackgroundColor(Color.parseColor("#DDDDDD"));
         button.setHeight(200);
         button.setWidth(250);
-        button.setOnClickListener(
-                new View.OnClickListener( )
-                {
-                    /**
-                     * Sets up the screen that follows after the user clicks on a
-                     * button on the first screen
-                     *
-                     * @param view
-                     *            the screen view
-                     */
-                    public void onClick(View view)
-                    {
-                        // Have to get item id from the item clicked on then pass it to description activity
-                        //goDescription(null, item );
+        ItemListener itemListener = new ItemListener(item.split(";")[0]);
+        button.setOnClickListener(itemListener);
 
-                    }
-                });
 
         String isTopBidder = (item.split(";")[3]).trim();
         if (isTopBidder.equals("true")){
@@ -265,21 +252,22 @@ public class ProfileActivity extends AppCompatActivity {
         v.addView(button);
     }
 
-    protected class MyLovelyOnClickListener implements View.OnClickListener
+    protected class ItemListener implements View.OnClickListener
     {
 
         String itemName;
-        public MyLovelyOnClickListener(String itemName) {
-            //this.myLovelyVariable = myLovelyVariable;
+        public ItemListener(String itemName) {
+            this.itemName = itemName;
         }
 
         @Override
         public void onClick(View v)
         {
             //read your lovely variable
+            goDescription(v, this.itemName);
         }
 
-    };
+    }
 
     /**
      * This is a AsyncRetrieveProfileBids class that uses the Android Studio library,
