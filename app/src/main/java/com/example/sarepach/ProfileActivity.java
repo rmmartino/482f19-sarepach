@@ -21,10 +21,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Button;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.LinearLayout;
 
-
-
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -191,11 +192,9 @@ public class ProfileActivity extends AppCompatActivity {
      *            the item being added
      */
     public void addImageView(TableRow v, String item){
-        ImageView imageView = new ImageView(getApplicationContext());
 
-        imageView.setImageResource(R.drawable.bsoshort);
-        //imageView.setMaxHeight(2);
-        //imageView.getLayoutParams().width=150;
+        ImageView imageView = new ImageView(getApplicationContext());
+        Picasso.get().load(item.split(";")[1]).into(imageView);
 
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
