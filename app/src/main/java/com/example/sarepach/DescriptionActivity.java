@@ -22,6 +22,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 import static java.lang.String.valueOf;
 
@@ -52,12 +53,12 @@ public class DescriptionActivity extends AppCompatActivity {
         itemName = getIntent().getStringExtra("ITEM_ID");
 
         // Execute PHP to get all item information
-        AsyncNewBid asyncNewBid = new AsyncNewBid(itemName);
+        AsyncNewBid asyncNewBid = new AsyncNewBid(itemName, "DisplayItem");
         try {
-            String itemInfo = asyncNewBid.execute().get();
+            String itemInfo = asyncNewBid.execute("DisplayItem").get();
             displayItemInfo(itemInfo);
         }catch(Exception e){
-            Log.w("DescriptionActivity", "Could not retreive item info: " + e);
+            Log.w("DescriptionActivity", "Could not retrieve item info: " + e);
         }
 
         // Want to wait for user to click on Bid
@@ -74,9 +75,9 @@ public class DescriptionActivity extends AppCompatActivity {
                     public void onClick(View view)
                     {
                         try {
-                            //TODO: Create new constructor for async send bid data
-                            AsyncNewBid asyncTask = new AsyncNewBid(itemName);
-                            String result = asyncTask.execute().get();
+                            String displayItem = "!DisplayItem";
+                            AsyncNewBid asyncTask = new AsyncNewBid(itemName, displayItem);
+                            String result = asyncTask.execute("!DisplayItem").get();
                             if(result.equals("Failure")) {
                                 AlertDialog alertDialog = new AlertDialog.Builder(DescriptionActivity.this).create();
                                 alertDialog.setTitle("Not inserted correctly");
@@ -146,12 +147,14 @@ public class DescriptionActivity extends AppCompatActivity {
      * @version 1.0 12/15/2019
      */
     protected class AsyncNewBid extends AsyncTask<String, String, String> {
-        //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String email;
         String itemName;
+        //String id;
+        String amount;
         HttpURLConnection conn;
         URL url = null;
         private final String displaySingleItem = "http://sarepach.cs.loyola.edu/UserConnection/displaySingleItem.php";
+        private final String bidsOn = "http://sarepach.cs.loyola.edu/UserConnection/bidsOn.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
@@ -162,11 +165,18 @@ public class DescriptionActivity extends AppCompatActivity {
          * @param itemName
          *            the name of the item
          */
-        public AsyncNewBid(String itemName){
-            this.itemName = "?name=" + itemName;
+        public AsyncNewBid(String itemName, String displayItem){
+            this.email = "?email=" + MainActivity.currentUser.Email;
+
+            if (displayItem.equals("DisplayItem")) {
+                this.itemName = "?name=" + itemName;
+
+            } else {
+                this.itemName = "&name=" + itemName;
+
+            }
+
         }
-
-
 
         /**
          * This will interact with UI and display loading message
@@ -174,11 +184,6 @@ public class DescriptionActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //pdLoading.setMessage("\tLoading...");
-            //pdLoading.setCancelable(false);
-            //pdLoading.show();
-
         }
 
         /**
@@ -193,16 +198,14 @@ public class DescriptionActivity extends AppCompatActivity {
          */
         @Override
         public String doInBackground(String... params) {
-            try {
-                // Only testing admin code for now (will execute client code instead)
-                url = new URL(displaySingleItem  + this.itemName);
 
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return e.toString();
-            }
             try {
+                if(params[0].equals("DisplayItem")) {
+                    url = new URL(displaySingleItem + this.itemName);
+                }
+                else{
+                    url = new URL(bidsOn + this.email + this.itemName + this.amount);
+                }
 
                 // Setup HttpURLConnection class to send and receive data from php
                 conn = (HttpURLConnection) url.openConnection();
@@ -215,7 +218,6 @@ public class DescriptionActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
@@ -243,7 +245,6 @@ public class DescriptionActivity extends AppCompatActivity {
 
                 }
 
-
                 else {
 
                     return ("unsuccessful");
@@ -255,19 +256,7 @@ public class DescriptionActivity extends AppCompatActivity {
             } finally {
                 conn.disconnect();
             }
-
-
         }
-/**
- @Override
- public void onPostExecute(String result){
- AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
- alertDialog.setTitle("Display Result");
- alertDialog.setMessage(result);
- alertDialog.show();
- }
- */
-
 
     }
 }
