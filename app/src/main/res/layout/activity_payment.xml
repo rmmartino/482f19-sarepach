@@ -34,7 +34,7 @@
         android:layout_below="@id/paymentTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:bac
+        android:background="#DDDDDD"
         android:textSize="28sp"
         android:text="Please Review the Info:\n You Bid:$130 \n Item: Artwork"
         />
