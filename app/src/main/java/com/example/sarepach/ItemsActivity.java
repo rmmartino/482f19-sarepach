@@ -1,9 +1,6 @@
 package com.example.sarepach;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -19,10 +16,7 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -157,10 +151,8 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
 
             tableRow.setBackgroundColor(Color.parseColor("#DDDDDD"));
 
-            //tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
             v.addView(tableRow);
             // Add text view to the new row
-
             addImageView(tableRow, item);
             addButton(tableRow, item);
             addTextView(tableRow, item);
@@ -169,10 +161,6 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         }catch (Exception e) {
             Log.w("ProfileActivityTableRow", e);
         }
-        //addButton();
-        //ImageView imageView = new ImageView(getApplicationContext());
-        //TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
-        //imageView.setLayoutParams(layoutParams);
     }
 
     /**
@@ -185,12 +173,9 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
      */
     public void addTextView(TableRow v, String item){
         TextView textView = new TextView(getApplicationContext());
-        //textView.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
-        //textView.setLayoutParams(layoutParams);
         textView.setTextSize(18f);
         textView.setTextColor(Color.BLACK);
         textView.setBackgroundColor(Color.parseColor("#DDDDDD"));
-        //textView.c();
 
         String next_bid = "Next bid: \n$";
         textView.setText(next_bid + item.split(";")[2]);
@@ -221,10 +206,16 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         v.addView(imageView, 200 ,200);
     }
 
+    /**
+     * Adds a button to view/bid on the item
+     *
+     * @param v
+     *            the screen view
+     * @param item
+     *            the item being added
+     */
     public void addButton(TableRow v, String item){
         Button button = new Button(this);
-        //button.LayoutParams layoutParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
-        //button.setLayoutParams(layoutParams);
         button.setTextSize(24f);
         button.setTextColor(Color.BLACK);
         button.setBackgroundColor(Color.parseColor("#DDDDDD"));
@@ -240,12 +231,25 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         v.addView(button);
     }
 
+    /**
+     * Runs the AsyncRetrieveFilter class with runs SQL statements on the database table
+     * based on the users chosen filter
+     *
+     * @param adapterView
+     *            the AdapterView where the selection happened
+     * @param view
+     *            the screen view
+     * @param i
+     *            the position of the filter in the dropdown menu
+     * @param l
+     *            the row id of the filter that is selected
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String filterChoice = adapterView.getItemAtPosition(i).toString();
         String result;
         try {
-            // When we open the items activity page we load all items in the database until the user wants to search / filter
+            // Display the items associated with the users chosen filter
             AsyncRetrieveFilter asyncRetrieveFilter = new AsyncRetrieveFilter(filterChoice);
             result = asyncRetrieveFilter.execute().get();
             TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
@@ -256,26 +260,51 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         }
     }
 
+    /**
+     * Invoked when the selection disappears from the view
+     *
+     * @param adapterView
+     *            the AdapterView that contains no selected item
+     */
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 
+    /**
+     * This is a ItemListener class that puts a button on the name of each item
+     * in the display list of items and then brings them to the information regarding
+     * the selected item.
+     *
+     * @author SaRePaCh
+     * @version 1.0 12/15/2019
+     */
     protected class ItemListener implements View.OnClickListener
     {
-
         String itemName;
+
+        /**
+         * Retrieves the name of the item selected
+         *
+         * @param itemName
+         *            the name of the item clicked on
+         */
         public ItemListener(String itemName) {
             this.itemName = itemName;
         }
 
+        /**
+         * Goes to the description page when the button (name of item) gets clicked
+         *
+         * @param v
+         *          the screen view
+         */
         @Override
         public void onClick(View v)
         {
             //read your lovely variable
             goDescription(v, this.itemName);
         }
-
     }
 
     /**
@@ -310,10 +339,6 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //pdLoading.setMessage("\tLoading...");
-            //pdLoading.setCancelable(false);
-            //pdLoading.show();
         }
 
         /**
@@ -338,7 +363,6 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
                 return e.toString();
             }
             try {
-
                 // Setup HttpURLConnection class to send and receive data from php
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
@@ -356,7 +380,6 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
             }
 
             try {
-
                 int response_code = conn.getResponseCode();
 
                 // Check if successful connection made
@@ -375,9 +398,7 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
 
                     // Pass data to onPostExecute method
                     return (result.toString());
-
                 }
-
 
                 else {
 
@@ -404,7 +425,6 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
      * @version 1.0 12/15/2019
      */
     protected class AsyncRetrieveFilter extends AsyncTask<String, String, String> {
-        //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String filterChoice;
         HttpURLConnection conn;
         URL url = null;
@@ -425,10 +445,6 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //pdLoading.setMessage("\tLoading...");
-            //pdLoading.setCancelable(false);
-            //pdLoading.show();
         }
 
         /**
@@ -465,7 +481,6 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
@@ -490,9 +505,7 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
 
                     // Pass data to onPostExecute method
                     return (result.toString());
-
                 }
-
 
                 else {
 
