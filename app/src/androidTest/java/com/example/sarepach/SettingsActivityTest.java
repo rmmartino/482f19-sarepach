@@ -21,7 +21,6 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -31,13 +30,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class SettingsActivityTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void mainActivityTest2() {
+    public void settingsActivityTest() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.emailID),
                         childAtPosition(
@@ -46,7 +45,7 @@ public class MainActivityTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("rmmartino@loyola.edu"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("pjsacchet@loyola.edu"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.passwordID),
@@ -56,68 +55,62 @@ public class MainActivityTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("wrongpassword"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("hellopat"), closeSoftKeyboard());
 
-        ViewInteraction textView = onView(
-                allOf(IsInstanceOf.<View>instanceOf(android.widget.TextView.class), withText("Incorrect username/password"),
-                        childAtPosition(
-                                allOf(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        childAtPosition(
-                                                IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                                0)),
-                                0),
-                        isDisplayed()));
-        textView.check(matches(withText("Incorrect username/password")));
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.passwordID), withText("wrongpassword"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText3.perform(longClick());
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.passwordID), withText("wrongpassword"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText4.perform(click());
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.passwordID), withText("wrongpassword"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText5.perform(replaceText("hello"));
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.passwordID), withText("hello"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText6.perform(closeSoftKeyboard());
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.profileLabel), withText("PROFILE"),
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(R.id.settingsButton), withText("Settings"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 1),
                         isDisplayed()));
-        textView2.check(matches(withText("PROFILE")));
+        appCompatButton.perform(click());
+
+        ViewInteraction frameLayout = onView(
+                allOf(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class), isDisplayed()));
+        frameLayout.check(matches(isDisplayed()));
+
+        ViewInteraction textView = onView(
+                allOf(withText("BSO Auction"),
+                        childAtPosition(
+                                allOf(withId(R.id.action_bar),
+                                        childAtPosition(
+                                                withId(R.id.action_bar_container),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        textView.check(matches(withText("BSO Auction")));
+
+        ViewInteraction imageView = onView(
+                allOf(withId(R.id.profilePic),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        imageView.check(matches(isDisplayed()));
+
+        ViewInteraction button = onView(
+                allOf(withId(R.id.changePassword),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                5),
+                        isDisplayed()));
+        button.check(matches(isDisplayed()));
+
+        ViewInteraction button2 = onView(
+                allOf(withId(R.id.returnToItems),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
+                        isDisplayed()));
+        button2.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(
