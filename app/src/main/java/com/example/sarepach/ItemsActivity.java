@@ -1,6 +1,7 @@
 package com.example.sarepach;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -16,7 +17,9 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -212,7 +215,7 @@ public class ItemsActivity extends AppCompatActivity implements AdapterView.OnIt
      * @param v
      *            the screen view
      * @param item
-     *            the item being added
+     *            the item the user wants to view/bid on
      */
     public void addButton(TableRow v, String item){
         Button button = new Button(this);

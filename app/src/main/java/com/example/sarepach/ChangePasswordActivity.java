@@ -1,5 +1,7 @@
 package com.example.sarepach;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,8 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -67,10 +67,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                 //goProfile(null);
                             } catch (Exception e) {
                                 Log.w("Change Pass", e);
-
                             }
-
                         }
+
                         else
                         {
                             AlertDialog alertDialog = new AlertDialog.Builder(ChangePasswordActivity.this).create();
@@ -80,7 +79,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
 
     /**
@@ -135,7 +133,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
      * @version 1.0 12/15/2019
      */
     protected class AsyncRetrieve extends AsyncTask<String, String, String> {
-        //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String oldPassIn;
         String newPassIn;
 
@@ -159,7 +156,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             this.oldPassIn = "?oldPassword=" + old;
             this.newPassIn = "&newPassword="+  newpass;
 
-
             Log.w("change pass", this.changePass);
         }
 
@@ -169,11 +165,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //pdLoading.setMessage("\tLoading...");
-            //pdLoading.setCancelable(false);
-            //pdLoading.show();
-
         }
 
         /**
@@ -198,8 +189,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 e.printStackTrace();
                 return e.toString();
             }
-            try {
 
+            try {
                 // Setup HttpURLConnection class to send and receive data from php
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
@@ -211,13 +202,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
 
             try {
-
                 int response_code = conn.getResponseCode();
 
                 // Check if successful connection made
@@ -246,10 +235,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             } finally {
                 conn.disconnect();
             }
-
-
         }
-
     }
-
 }
