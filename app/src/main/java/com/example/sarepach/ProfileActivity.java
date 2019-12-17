@@ -69,6 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
             TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
             //tableLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
             addItemEntitys(tableLayout, result);
+
         }
         catch(Exception e){
             Log.w("ProfileActivityCreate", e);

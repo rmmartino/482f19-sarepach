@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -46,10 +47,15 @@ public class DescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_description);
         bidButton = (Button) findViewById(R.id.bidID);
         itemName = getIntent().getStringExtra("ITEM_ID");
+
         // Execute PHP to get all item information
         AsyncNewBid asyncNewBid = new AsyncNewBid(itemName);
         try {
             String itemInfo = asyncNewBid.execute().get();
+            AlertDialog alertDialogTime = new AlertDialog.Builder(DescriptionActivity.this).create();
+            alertDialogTime.setTitle("Auction is Closed");
+            alertDialogTime.setMessage(itemInfo);
+            alertDialogTime.show();
             displayItemInfo(itemInfo);
         }catch(Exception e){
             Log.w("DescriptionActivity", "Could not retreive item info: " + e);
@@ -69,6 +75,7 @@ public class DescriptionActivity extends AppCompatActivity {
                     public void onClick(View view)
                     {
                         try {
+                            //TODO: Create new constructor for async send bid data
                             AsyncNewBid asyncTask = new AsyncNewBid(itemName);
                             String result = asyncTask.execute().get();
                             if(result.equals("Failure")) {
@@ -114,7 +121,11 @@ public class DescriptionActivity extends AppCompatActivity {
     }
 
     public void displayItemInfo(String itemInfo) {
-        
+        // Parse all item info for just the item name to display first
+        String itemName = itemInfo.split(";")[0];
+        TextView textView = (TextView) findViewById(R.id.itemID);
+        textView.setText(itemName);
+
     }
 
     /**
