@@ -78,10 +78,14 @@ public class DescriptionActivity extends AppCompatActivity {
                             String displayItem = "!DisplayItem";
                             AsyncNewBid asyncTask = new AsyncNewBid(itemName, displayItem);
                             String result = asyncTask.execute("!DisplayItem").get();
+                            AlertDialog alertDialog = new AlertDialog.Builder(DescriptionActivity.this).create();
+                            alertDialog.setTitle("Not inserted correctly");
+                            alertDialog.setMessage(result);
+                            alertDialog.show();
                             if(result.equals("Failure")) {
-                                AlertDialog alertDialog = new AlertDialog.Builder(DescriptionActivity.this).create();
-                                alertDialog.setTitle("Not inserted correctly");
-                                alertDialog.show();
+                                AlertDialog alertDialog2 = new AlertDialog.Builder(DescriptionActivity.this).create();
+                                alertDialog2.setTitle("Not inserted correctly");
+                                alertDialog2.show();
                             }
                         } catch(Exception e) {
                             Log.w("DescriptionActivity", e);
@@ -168,11 +172,16 @@ public class DescriptionActivity extends AppCompatActivity {
         public AsyncNewBid(String itemName, String displayItem){
             this.email = "?email=" + MainActivity.currentUser.Email;
 
+
             if (displayItem.equals("DisplayItem")) {
                 this.itemName = "?name=" + itemName;
 
             } else {
                 this.itemName = "&name=" + itemName;
+                // Get amount from text field
+                EditText editText = (EditText) findViewById(R.id.bidAmountInput);
+                String amount = editText.getText().toString();
+                this.amount = "&amount=" + amount;
 
             }
 
