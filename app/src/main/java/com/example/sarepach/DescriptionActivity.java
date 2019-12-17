@@ -131,12 +131,9 @@ public class DescriptionActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.itemdescriptionID);
         textView.setText(itemInfo.split(";")[2]);
 
-        String bidInfo = "Current Bid: $" + itemInfo.split(";")[3] + "\n Your Min Bid: $" + itemInfo.split(";")[4].replace("_", "");
+        String bidInfo = "Current Bid: $" + itemInfo.split(";")[3] + "\n Minimum Next Bid: $" + itemInfo.split(";")[4].replace("_", "");
         textView = (TextView) findViewById(R.id.bidInfoID);
         textView.setText(bidInfo);
-
-
-
     }
 
     /**
