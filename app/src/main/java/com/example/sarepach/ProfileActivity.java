@@ -314,7 +314,6 @@ public class ProfileActivity extends AppCompatActivity {
                 url = new URL(validateUserPHP + this.username);
 
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 return e.toString();
             }
@@ -331,7 +330,6 @@ public class ProfileActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
