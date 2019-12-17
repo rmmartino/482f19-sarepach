@@ -6,12 +6,9 @@
   $expirationDate = $_GET['expirationDate'];
   $csv = $_GET['csv'];
   $name = $_GET['name'];
-  //encode card number
-  #$encpass = password_hash($password, PASSWORD_BCRYPT, $options );
-
-
-  //Validate card number!!
-
+  //encrypt card number
+  $options = [ ‘cost’ => 12 ];
+  $creditCardEncrypt = password_hash($creditCard, PASSWORD_BCRYPT, $options );
 
 /* ACCESS THE DATABASE */
 $servername = "cs-database.cs.loyola.edu";
@@ -28,16 +25,13 @@ if (!$conn) {
 }
 
 // Add credit card information to the user that is bidding
-$sql = "UPDATE user SET creditCard = '$creditCard', nameOnCard = '$name', expirationDate = '$expirationDate', csv = '$csv' where email like '$email';";
+$sql = "UPDATE user SET creditCard = '$creditCardEncrypt', nameOnCard = '$name', expirationDate = '$expirationDate', csv = '$csv' where email like '$email';";
 
 // Check to see if the credit card information was added
 if ($conn->query($sql) == TRUE) {
-//    echo "<strong> Credit card info added successfully! </strong>";
-   // echo "Successfully"
-} 
-else {
+    echo "Successful";
+} else { 
     echo "Error with Information";
-    //echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 mysqli_close( $conn );

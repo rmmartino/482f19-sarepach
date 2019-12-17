@@ -78,10 +78,7 @@ public class DescriptionActivity extends AppCompatActivity {
                             String displayItem = "!DisplayItem";
                             AsyncNewBid asyncTask = new AsyncNewBid(itemName, displayItem);
                             String result = asyncTask.execute("!DisplayItem").get();
-                            AlertDialog alertDialog = new AlertDialog.Builder(DescriptionActivity.this).create();
-                            alertDialog.setTitle("Not inserted correctly");
-                            alertDialog.setMessage(result);
-                            alertDialog.show();
+                            gopaymentpage(null);
                             if(result.equals("Failure")) {
                                 AlertDialog alertDialog2 = new AlertDialog.Builder(DescriptionActivity.this).create();
                                 alertDialog2.setTitle("Not inserted correctly");
