@@ -2,6 +2,7 @@ package com.example.sarepach;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,11 +11,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +28,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.String.valueOf;
 
@@ -33,7 +40,7 @@ import static java.lang.String.valueOf;
  * @author SaRePaCh
  * @version 1.0 12/15/2019
  */
-public class ItemsActivity extends AppCompatActivity {
+public class ItemsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     /**
      * Creates the screen of the app that displays all of the items up for auction
@@ -45,6 +52,28 @@ public class ItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
+        Spinner filter = (Spinner) findViewById(R.id.filter);
+        filter.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Trending");
+        categories.add("Price: Low to High");
+        categories.add("Price: High to Low");
+        categories.add("Entertainment");
+        categories.add("Art");
+        categories.add("Sports");
+        categories.add("Health");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        filter.setAdapter(dataAdapter);
+
         String allItems = "";
         try {
             // When we open the items activity page we load all items in the database until the user wants to search / filter
@@ -55,10 +84,6 @@ public class ItemsActivity extends AppCompatActivity {
         } catch(Exception e){
             Log.w("ItemsActivity", "Error loading all items: " +  e);
         }
-
-
-
-
     }
 
     /**
@@ -206,6 +231,17 @@ public class ItemsActivity extends AppCompatActivity {
         button.setGravity(Gravity.LEFT);
 
         v.addView(button);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String item = adapterView.getItemAtPosition(i).toString();
+        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
     /**
