@@ -40,7 +40,7 @@
         android:layout_below="@id/imageID"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="28sp"
+        android:textSize="22sp"
         android:text="Painted By: James Smith 1872"
         />
 
@@ -50,7 +50,7 @@
         android:layout_below="@id/itemdescriptionID"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="28sp"
+        android:textSize="22sp"
         android:text="Current Bid: $125 \n Your Min Bid: $130"
         />
 
@@ -64,29 +64,31 @@
         android:layout_marginTop="20dp"
         android:background="@android:color/white"
         android:text="Your Bid:"
-        android:textSize="28sp" />
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/bidAmountInput"
         style="@style/LabelStyle"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_below="@id/bidInfoID"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/bidInfo2ID"
         android:hint="$"
-        android:textSize="28sp" />
+        android:textSize="22sp" />
 
     <Button
         android:id="@+id/bidID"
-        android:layout_width="200dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/bidAmountInput"
+        android:layout_below="@id/bidInfoID"
+        android:layout_toRightOf="@id/bidAmountInput"
         android:background="@android:color/holo_green_dark"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
         android:text="BID!"
-        android:textSize="40dp"
+        android:textSize="26dp"
         android:onClick="gopaymentpage"
         />
 
