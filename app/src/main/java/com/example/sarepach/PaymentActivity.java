@@ -48,6 +48,13 @@ public class PaymentActivity extends AppCompatActivity {
         submitButton = (Button)findViewById(R.id.submitID);
         nameOnCardText = (EditText)findViewById(R.id.creditNameInput);
         creditNumberText = (EditText)findViewById(R.id.creditNumberInput);
+        String creditNumber;
+        creditNumber = creditNumberText.getText().toString();
+        if(!checkLuhn(creditNumber)) {
+            AlertDialog alertDialog = new AlertDialog.Builder(PaymentActivity.this).create();
+            alertDialog.setTitle("Not a valid credit card number");
+            alertDialog.show();
+        }
         expirationDateText = (EditText)findViewById(R.id.expirationDateInput);
         CSVText = (EditText)findViewById(R.id.CVVInput);
 
@@ -101,6 +108,40 @@ public class PaymentActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ShippingActivity.class);
         this.startActivity(intent);
     }
+
+    /**
+     * Checks to see if the credit card inputted by the user is valid
+     *
+     * @param cardNo
+     *            the credit card number inputted by the user
+     *
+     * @return true if the credit card number is valid, false otherwise
+     */
+    static boolean checkLuhn(String cardNo)
+    {
+        int nDigits = cardNo.length();
+
+        int nSum = 0;
+        boolean isSecond = false;
+        for (int i = nDigits - 1; i >= 0; i--)
+        {
+
+            int d = cardNo.charAt(i) - '0';
+
+            if (isSecond)
+                d = d * 2;
+
+            // We add two digits to handle
+            // cases that make two digits
+            // after doubling
+            nSum += d / 10;
+            nSum += d % 10;
+
+            isSecond = !isSecond;
+        }
+        return (nSum % 10 == 0);
+    }
+
 
     /**
      * This is a AsyncRetrieve class that uses the Android Studio library,
