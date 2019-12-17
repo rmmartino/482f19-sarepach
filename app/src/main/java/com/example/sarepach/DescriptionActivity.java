@@ -40,13 +40,21 @@ public class DescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Button bidButton;
         final int itemId;
-        final String id;
+        final String itemName;
         final EditText amount;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
         bidButton = (Button) findViewById(R.id.bidID);
-        id = getIntent().getStringExtra("ITEM_ID");
-        amount = (EditText) findViewById(R.id.bidAmountInput);
+        itemName = getIntent().getStringExtra("ITEM_ID");
+        // Execute PHP to get all item information
+        AsyncNewBid asyncNewBid = new AsyncNewBid(itemName);
+        try {
+            String itemInfo = asyncNewBid.execute().get();
+            displayItemInfo(itemInfo);
+        }catch(Exception e){
+            Log.w("DescriptionActivity", "Could not retreive item info: " + e);
+        }
+
         // Want to wait for user to click on Bid
         bidButton.setOnClickListener(
                 new View.OnClickListener()
@@ -61,7 +69,7 @@ public class DescriptionActivity extends AppCompatActivity {
                     public void onClick(View view)
                     {
                         try {
-                            AsyncNewBid asyncTask = new AsyncNewBid(id, amount.getText().toString());
+                            AsyncNewBid asyncTask = new AsyncNewBid(itemName);
                             String result = asyncTask.execute().get();
                             if(result.equals("Failure")) {
                                 AlertDialog alertDialog = new AlertDialog.Builder(DescriptionActivity.this).create();
@@ -105,6 +113,10 @@ public class DescriptionActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public void displayItemInfo(String itemInfo) {
+        
+    }
+
     /**
      * This is a AsyncNewBid class that uses the Android Studio library,
      * AsyncTask which allows for the communication between the server and the app.
@@ -117,11 +129,10 @@ public class DescriptionActivity extends AppCompatActivity {
     protected class AsyncNewBid extends AsyncTask<String, String, String> {
         //ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         String email;
-        String id;
-        String amount;
+        String itemName;
         HttpURLConnection conn;
         URL url = null;
-        private final String bidsOnPHP = "http://sarepach.cs.loyola.edu/UserConnection/bidsOn.php";
+        private final String displaySingleItem = "http://sarepach.cs.loyola.edu/UserConnection/displaySingleItem.php";
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
 
@@ -129,16 +140,14 @@ public class DescriptionActivity extends AppCompatActivity {
          * Retrieves the email of the user, id of the item they're bidding on, and the amount
          * they're bidding on the item
          *
-         * @param id
-         *            the id of the item
-         * @param amount
-         *            the amount the user is bidding on the item
+         * @param itemName
+         *            the name of the item
          */
-        public AsyncNewBid(String id, String amount){
-            this.email = "?email=" + MainActivity.currentUser.Email;
-            this.id = "&id=" + id;
-            this.amount = "&amount=" + amount;
+        public AsyncNewBid(String itemName){
+            this.itemName = "?name=" + itemName;
         }
+
+
 
         /**
          * This will interact with UI and display loading message
@@ -167,7 +176,7 @@ public class DescriptionActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             try {
                 // Only testing admin code for now (will execute client code instead)
-                url = new URL(bidsOnPHP + this.email + this.id + this.amount);
+                url = new URL(displaySingleItem  + this.itemName);
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
