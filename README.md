@@ -7,8 +7,5 @@ This is the repository for team sarepach to develop their Auction application in
 3. Patrick Sacchet (pa)
 4. Chelsea Meier (ch)
 
-# Team Lead: 
-Sarah Flaherty
-
 # Link to Java API Documentation:
 file:///Users/chelseameier/AndroidStudioProjects/482f19-sarepach/index.html
