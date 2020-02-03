@@ -1,11 +1,5 @@
 <?php
 
-    /* ACCESS THE DATABASE */
-    $servername = "cs-database.cs.loyola.edu";
-    $dbusername = "rmmartino";
-    $dbpassword = "1738874";
-    $dbname = "sarepach";
-
     // Create connection
     $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
