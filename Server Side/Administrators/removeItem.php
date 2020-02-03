@@ -11,12 +11,6 @@
   /* Getting the id the user entered */
   $id = $_GET['id'];
 
-/* ACCESS THE DATABASE */
-$servername = "cs-database.cs.loyola.edu";
-$dbusername = "cnmeier";
-$dbpassword = "1732821";
-$dbname = "sarepach";
-
 // Create connection
 $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
