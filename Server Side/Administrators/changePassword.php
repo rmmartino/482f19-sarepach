@@ -24,12 +24,6 @@
   echo nl2br("Password Old Entered: $oldpassword \n");
   echo nl2br("New password: $newInput \n");
 
-/* ACCESS THE DATABASE */
-$servername = "cs-database.cs.loyola.edu";
-$dbusername = "sflahert";
-$dbpassword = "1732754";
-$dbname = "sarepach";
-
 // Create connection
 $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
