@@ -12,16 +12,6 @@
   //encode card number
   #$encpass = password_hash($password, PASSWORD_BCRYPT, $options );
 
-
-  //Validate card number!!
-
-
-/* ACCESS THE DATABASE */
-$servername = "cs-database.cs.loyola.edu";
-$dbusername = "sflahert";
-$dbpassword = "1732754";
-$dbname = "sarepach";
-
 // Create connection
 $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
