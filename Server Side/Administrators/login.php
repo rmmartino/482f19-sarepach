@@ -14,12 +14,6 @@
   $username = $_GET['username'];
   $password = $_GET['password'];
 
-/* ACCESS THE DATABASE */
-$servername = "cs-database.cs.loyola.edu";
-$dbusername = "sflahert";
-$dbpassword = "1732754";
-$dbname = 'sarepach';
-
 $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
 // Check connection
