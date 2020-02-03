@@ -32,12 +32,6 @@ $newpath= "uploads/";
 echo exec("cp $location $newpath/$imageFile");
 chmod("$newpath/$imageFile", 0775);
 
-/* ACCESS THE DATABASE */
-$servername = "cs-database.cs.loyola.edu";
-$dbusername = "sflahert";
-$dbpassword = "1732754";
-$dbname = "sarepach";
-
 // Create connection
 $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
