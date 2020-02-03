@@ -21,13 +21,7 @@
 //Check Input passed correctly
   echo nl2br("Username Entered : $username\n");
   echo nl2br("Password Entered: $password\n");
-
-/* ACCESS THE DATABASE */
-$servername = "cs-database.cs.loyola.edu";
-$dbusername = "sflahert";
-$dbpassword = "1732754";
-$dbname = "sarepach";
-
+ 
 // Create connection
 $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
